@@ -25,66 +25,67 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "Campagne Mcomme Mutuelle",
-    category: "Brand Content",
-    description: "Stratégie de contenu digitale complète incluant réseaux sociaux, blog et newsletter.",
+    title: "M comme Mutuelle",
+    category: "Événementiel & Activation",
+    description: "Piloter une stratégie d’activation sur un événement à fort impact.",
     image: "project1",
     stats: { views: "125K", likes: "8.5K", engagement: "12%" },
     color: "from-rose-500 to-pink-600",
-    challenge: "Redéfinir l'image d'une mutuelle traditionnelle pour la rendre attractive auprès d'une cible plus jeune et connectée sans perdre la confiance des seniors.",
-    solution: "Déploiement d'une ligne éditoriale axée sur le 'Care' et la proximité. Création de contenus 'snackable' pédagogiques et d'un storytelling visuel moderne.",
+    challenge: "Valoriser la présence de la mutuelle en tant que partenaire majeur d’un événement d’envergure, en créant une expérience visible, engageante et cohérente avec son image.",
+    solution: "J’ai conçu et piloté l’ensemble du dispositif de communication autour de l’événement, en pensant à la fois l’expérience terrain et les activations de marque (goodies, interactions). L’objectif : créer une présence visible et cohérente capable de capter l’attention et générer du lien.",
     results: [
-      "Augmentation de 25% de l'engagement sur Instagram",
-      "Hausse de 15% du trafic qualifié sur le blog",
-      "Amélioration notable du sentiment de marque positif"
+      "Forte visibilité de la marque sur l’événement",
+      "Engagement direct avec le public via des activations terrain",
+      "Retours positifs sur l’expérience proposée et la proximité créée",
+      "Bilan post-événement validant la pertinence des actions"
     ]
   },
   {
     id: 2,
-    title: "Lancement Oparebrise",
-    category: "Social Media",
-    description: "Campagne de lancement multi-canal avec focus sur la visibilité locale et nationale.",
+    title: "Oparebrise 33",
+    category: "SEO & Digital Local",
+    description: "Positionner la marque en première position sur les recherches locales.",
     image: "project2",
     stats: { views: "89K", likes: "5.2K", engagement: "8.5%" },
     color: "from-blue-500 to-cyan-600",
-    challenge: "Imposer un nouvel acteur dans un marché saturé. Nécessité de créer une notoriété instantanée et une preuve de confiance dès le premier contact.",
-    solution: "Stratégie Social Ads chirurgicale couplée à une activation d'influence locale. Mise en avant des bénéfices clients et de la facilité du service.",
+    challenge: "Améliorer la visibilité locale de l’entreprise dans un environnement concurrentiel et générer du trafic qualifié via les moteurs de recherche.",
+    solution: "Refonte complète du contenu du site avec une approche orientée SEO : intégration de mots-clés stratégiques et optimisation technique globale. Alignement des contenus avec les attentes utilisateurs pour booster la conversion.",
     results: [
-      "89K impressions sur le premier mois",
-      "Cout par clic réduit de 20% par rapport au benchmark",
-      "50+ prises de rendez-vous directes via les réseaux"
+      "Positionnement en #1 sur les recherches locales (Cenon)",
+      "Augmentation significative du trafic qualifié",
+      "Amélioration de la visibilité et de la présence en ligne"
     ]
   },
   {
     id: 3,
-    title: "Stratégie SEO & Content",
-    category: "SEO & Content",
-    description: "Optimisation technique et sémantique pour dominer les résultats de recherche.",
+    title: "Zola média",
+    category: "Communication 360°",
+    description: "Construire une stratégie de communication pour un événement local.",
     image: "project3",
     stats: { views: "200K", likes: "-", engagement: "+45%" },
     color: "from-emerald-500 to-teal-600",
-    challenge: "Manque de visibilité sur les mots-clés stratégiques. Dépendance trop forte aux campagnes payantes.",
-    solution: "Audit sémantique complet et mise en place d'une 'Content Factory' produisant des articles à forte valeur ajoutée répondant aux intentions de recherche réelles.",
+    challenge: "Concevoir une stratégie de communication complète pour le lancement et la promotion d’un événement local de grande ampleur.",
+    solution: "Structuration d'un dispositif 360° : identité visuelle, stratégie digitale (RS, emailing), supports print et plan d'activation. Focus sur la cohérence visuelle pour générer une fréquentation maximale.",
     results: [
-      "Passage de la position #45 à #3 sur 12 mots-clés clés",
-      "Croissance de 45% du trafic organique global",
-      "Durée moyenne de session augmentée de 1min30"
+      "Mise en place d’une communication 360° cohérente",
+      "Déploiement de supports variés (digital + terrain)",
+      "Visibilité renforcée autour de l’événement"
     ]
   },
   {
     id: 4,
-    title: "Influence & Partenariats",
-    category: "Influence Marketing",
-    description: "Gestion de campagnes d'influence axées sur l'authenticité et la conversion.",
+    title: "Parc aventure Fontdouce",
+    category: "UX/UI & Web Performance",
+    description: "Refondre un site pour améliorer navigation et performance.",
     image: "project4",
     stats: { views: "56K", likes: "3.8K", engagement: "15%" },
     color: "from-amber-500 to-orange-600",
-    challenge: "Trouver le bon équilibre entre portée (reach) et affinité réelle avec la marque.",
-    solution: "Sélection rigoureuse de micro-influenceurs partageant les valeurs de la marque. Co-création de contenus authentiques plutôt que de simples placements de produits.",
+    challenge: "Repenser entièrement l’expérience digitale du site pour améliorer la lisibilité, l’attractivité et la fluidité de la navigation.",
+    solution: "Conception de la maquette mobile (UX/UI) en autonomie sur Figma. Structuration des parcours utilisateurs et mise à jour globale des contenus, visuels et catégories pour une refonte efficace.",
     results: [
-      "Taux d'engagement exceptionnel de 15%",
-      "Construction d'une communauté de brand advocates loyaux",
-      "Contenus réutilisés sur les supports marketing officiels"
+      "Amélioration majeure de l’expérience utilisateur",
+      "Site plus clair, structuré et engageant",
+      "Refonte globale réussie et validée techniquement"
     ]
   },
 ];
