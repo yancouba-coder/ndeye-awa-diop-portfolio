@@ -8,8 +8,9 @@ import Hero from './sections/Hero';
 import Profile from './sections/Profile';
 import Experience from './sections/Experience';
 import Skills from './sections/Skills';
-import Projects from './sections/Projects';
 import Formation from './sections/Formation';
+import Projects from './sections/Projects';
+import Testimonials from './sections/Testimonials';
 import Contact from './sections/Contact';
 import ScrollInvite from './components/ScrollInvite';
 
@@ -19,8 +20,9 @@ const navItems = [
   { label: 'Profil', href: '#profile' },
   { label: 'Expérience', href: '#experience' },
   { label: 'Compétences', href: '#skills' },
-  { label: 'Formation', href: '#formation' },
+   { label: 'Formations', href: '#formation' },
   { label: 'Projets', href: '#projects' },
+  { label: 'Avis', href: '#testimonials' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -45,7 +47,7 @@ function App() {
 
   useEffect(() => {
     // Track active section
-    const sections = ['profile', 'experience', 'skills', 'formation', 'projects', 'contact'];
+    const sections = ['profile', 'experience', 'skills', 'formation', 'projects', 'testimonials', 'contact'];
     
     sections.forEach((sectionId) => {
       const element = document.getElementById(sectionId);
@@ -212,6 +214,9 @@ function App() {
         </div>
         <div id="projects">
           <Projects />
+        </div>
+        <div id="testimonials">
+          <Testimonials />
         </div>
         <div id="contact">
           <Contact />

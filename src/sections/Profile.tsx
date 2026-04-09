@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Linkedin, Instagram, Mail, Download, MapPin, Briefcase } from 'lucide-react';
+import profileImage from '../assets/images/profile-photo.jpeg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,8 +76,8 @@ const Profile = () => {
                 ref={imageRef}
                 className="absolute inset-0 will-change-transform"
               >
-                <img
-                  src="/profile-photo.jpg"
+                <img 
+                  src={profileImage}
                   alt="Awa Diop"
                   className="w-full h-full object-cover"
                 />

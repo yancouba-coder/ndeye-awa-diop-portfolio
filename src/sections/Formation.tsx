@@ -68,6 +68,7 @@ const Formation = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
   const [selectedEdu, setSelectedEdu] = useState<EducationItem | null>(null);
 
   useEffect(() => {
@@ -91,6 +92,11 @@ const Formation = () => {
           pin: true,
           scrub: 1,
           invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            if (progressRef.current) {
+              gsap.set(progressRef.current, { width: `${self.progress * 100}%` });
+            }
+          }
         },
       });
 
@@ -165,6 +171,17 @@ const Formation = () => {
               </div>
             ))}
             <div className="flex-shrink-0 w-8 sm:w-16" />
+          </div>
+        </div>
+
+        {/* Progress bar */}
+        <div className="px-4 sm:px-8 mt-12">
+          <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+            <div
+              ref={progressRef}
+              className="h-full bg-gradient-to-r from-brand-rose to-brand-purple rounded-full will-change-transform"
+              style={{ width: "0%" }}
+            />
           </div>
         </div>
       </div>

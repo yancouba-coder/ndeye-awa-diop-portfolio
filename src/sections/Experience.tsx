@@ -34,6 +34,22 @@ const experiences: ExperienceItem[] = [
     ],
   },
   {
+    id: "zola-media",
+    company: "Zola Média",
+    role: "Chargée de communication et marketing",
+    period: "Sept 2025 - Déc 2025",
+    description: "Alternance Événementielle",
+    highlights: ["Stratégie de Marque", "Réseaux Sociaux", "SEO", "Influence"],
+    color: "from-amber-400 to-orange-500",
+    story: "Au sein de l'agence événementielle Zola Média, j'ai porté la voix de l'agence à travers une stratégie de brand content omnicanale et une coordination événementielle rigoureuse. Cette immersion m'a permis de conjuguer créativité graphique et optimisation technique SEO pour servir des événements premium.",
+    achievements: [
+      "Définition et mise en œuvre de la stratégie de marque globale",
+      "Gestion des réseaux sociaux et création de contenus engagés",
+      "Rédaction de contenus optimisés SEO et administration web",
+      "Coordination logistique et participation à des événements privés"
+    ],
+  },
+  {
     id: "oparebrise33",
     company: "Oparebrise33",
     role: "Chargée de communication digitale",
@@ -55,7 +71,7 @@ const experiences: ExperienceItem[] = [
     period: "Nov 2023 - Août 2024",
     description: "Alternance Créative",
     highlights: ["Refonte Web", "Influence Marketing", "SEO/CRO", "Animation"],
-    color: "from-amber-500 to-orange-600",
+    color: "from-emerald-500 to-teal-600",
     story: "Une expérience immersive mêlant gestion de projet web et marketing d'influence. J'ai piloté la refonte de l'image digitale du parc, en alliant stratégie de contenu visuelle et optimisation technique pour garantir une expérience utilisateur fluide et moderne.",
     achievements: [
       "Pilotage de la refonte du site internet et optimisation du CRO",
@@ -182,7 +198,7 @@ const Experience = () => {
         </div>
 
         {/* Progress bar */}
-        <div className="absolute bottom-8 left-4 right-4 sm:left-8 sm:right-8 z-20">
+        <div className="px-4 sm:px-8 mt-12">
           <div className="h-1 bg-white/10 rounded-full overflow-hidden">
             <div
               ref={progressRef}
@@ -191,6 +207,7 @@ const Experience = () => {
             />
           </div>
         </div>
+
       </div>
 
       {/* Detail Modal Overlay */}
