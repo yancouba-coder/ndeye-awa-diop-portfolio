@@ -13,24 +13,22 @@ const Profile = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Card entrance animation
+      // Subtle entrance
       gsap.fromTo(
         cardRef.current,
         {
-          y: "100vh",
-          rotateX: 15,
+          y: 30,
           opacity: 0,
         },
         {
           y: 0,
-          rotateX: 0,
           opacity: 1,
-          ease: "none",
+          duration: 1,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top bottom",
-            end: "top top",
-            scrub: 0.5,
+            start: "top 80%",
+            once: true,
           },
         }
       );
@@ -38,54 +36,19 @@ const Profile = () => {
       // Image reveal
       gsap.fromTo(
         imageRef.current,
-        { scale: 1.2, opacity: 0 },
+        { scale: 1.1, opacity: 0 },
         {
           scale: 1,
           opacity: 1,
-          ease: "none",
+          duration: 1.2,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 80%",
-            end: "top 30%",
-            scrub: 0.5,
+            once: true,
           },
         }
       );
-
-      // Content stagger
-      const contentElements = contentRef.current?.children;
-      if (contentElements) {
-        gsap.fromTo(
-          contentElements,
-          { y: 40, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            stagger: 0.1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 60%",
-              end: "top 20%",
-              scrub: 0.5,
-            },
-          }
-        );
-      }
-
-      // Exit animation
-      gsap.to(cardRef.current, {
-        x: "-100vw",
-        rotateY: -15,
-        opacity: 0,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "bottom bottom",
-          end: "bottom top",
-          scrub: 0.5,
-        },
-      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -94,21 +57,20 @@ const Profile = () => {
   return (
     <section
       ref={sectionRef}
-      className="section-container bg-brand-dark z-20"
+      className="section-container bg-brand-dark pt-0 pb-20 z-20"
     >
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/20 via-transparent to-brand-rose/10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/10 via-transparent to-brand-rose/5" />
 
       {/* Main card */}
       <div
         ref={cardRef}
         className="relative w-full max-w-5xl mx-auto will-change-transform"
-        style={{ perspective: "1000px" }}
       >
         <div className="glass-card-strong rounded-3xl overflow-hidden shadow-card">
           <div className="grid md:grid-cols-2 gap-0">
             {/* Image side */}
-            <div className="relative h-80 md:h-auto overflow-hidden">
+            <div className="relative h-80 md:h-96 lg:h-auto overflow-hidden">
               <div
                 ref={imageRef}
                 className="absolute inset-0 will-change-transform"
@@ -129,7 +91,7 @@ const Profile = () => {
                     <Briefcase className="w-3 h-3" />
                     <span>Actuellement</span>
                   </div>
-                  <p className="text-white font-semibold text-sm">Mcomme Mutuelle</p>
+                  <p className="text-white font-semibold text-sm">M comme Mutuelle</p>
                   <p className="text-white/70 text-xs">Chargée de Communication Digitale</p>
                 </div>
               </div>
@@ -144,10 +106,10 @@ const Profile = () => {
                 {/* Header */}
                 <div>
                   <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-2">
-                    Awa Diop
+                    Profil
                   </h2>
                   <p className="text-brand-rose font-medium text-lg">
-                    Brand Content Strategist
+                    Chargée de Communication Digitale & Brand Content
                   </p>
                 </div>
 
@@ -168,16 +130,16 @@ const Profile = () => {
                 {/* Stats */}
                 <div className="grid grid-cols-3 gap-4 py-4 border-y border-white/10">
                   <div className="text-center">
-                    <p className="text-2xl sm:text-3xl font-heading font-bold text-gradient">3+</p>
-                    <p className="text-xs text-white/50 mt-1">Années d'exp.</p>
+                    <p className="text-2xl sm:text-3xl font-heading font-bold text-gradient">2</p>
+                    <p className="text-xs text-white/50 mt-1">Certifications</p>
                   </div>
                   <div className="text-center border-x border-white/10">
-                    <p className="text-2xl sm:text-3xl font-heading font-bold text-gradient">50+</p>
-                    <p className="text-xs text-white/50 mt-1">Projets</p>
+                    <p className="text-2xl sm:text-3xl font-heading font-bold text-gradient">12+</p>
+                    <p className="text-xs text-white/50 mt-1">Outils maîtrisés</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-2xl sm:text-3xl font-heading font-bold text-gradient">15+</p>
-                    <p className="text-xs text-white/50 mt-1">Compétences</p>
+                    <p className="text-2xl sm:text-3xl font-heading font-bold text-gradient">3+</p>
+                    <p className="text-xs text-white/50 mt-1">Années d'exp.</p>
                   </div>
                 </div>
 
@@ -200,7 +162,7 @@ const Profile = () => {
                     <Instagram className="w-5 h-5" />
                   </a>
                   <a
-                    href="mailto:awa.diop@email.com"
+                    href="mailto:nad82467@gmail.com"
                     className="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-white/70 hover:text-white hover:bg-brand-rose/20 transition-all duration-300"
                   >
                     <Mail className="w-5 h-5" />

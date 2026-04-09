@@ -285,8 +285,8 @@ const Skills = () => {
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             { label: "Compétences", value: "15+" },
-            { label: "Certifications", value: "5" },
-            { label: "Outils maîtrisés", value: "12" },
+            { label: "Certifications", value: "2" },
+            { label: "Outils maîtrisés", value: "12+" },
             { label: "Langues", value: "3" },
           ].map((stat, i) => (
             <div key={i} className="glass-card rounded-2xl p-4 text-center">

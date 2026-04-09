@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Calendar, Building2, ArrowRight } from 'lucide-react';
+import { Calendar, Building2 } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,145 +16,101 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
-    company: "Mcomme Mutuelle",
-    role: "Chargée de Communication Digitale",
-    period: "2023 - Présent",
-    description: "Gestion de la stratégie digitale, du SEO et du brand content pour un leader de l'assurance.",
+    company: "M comme Mutuelle",
+    role: "Chargée de communication",
+    period: "Sept 2025 - Sept 2026",
+    description: "Alternance",
     highlights: [
-      "Stratégie digitale & SEO",
-      "Gestion des réseaux sociaux",
-      "Création de contenu",
-      "Analyse des KPIs",
+      "Gestion et coordination d'événements",
+      "Création de contenus digitaux",
+      "Planification éditoriale",
+      "Gestion et animation des réseaux sociaux",
+      "Modération et e-réputation",
+      "Analyse et suivi des KPI",
+      "Pilotage de la communication agences",
+      "Gestion des partenariats",
+      "Montage et production vidéo",
+      "Optimisation contenus site web",
+      "Suivi et gestion budgétaire",
+      "Coordination prestataires externes"
     ],
     color: "from-rose-500 to-purple-600",
   },
   {
     company: "Oparebrise33",
-    role: "Responsable Marketing Digital",
-    period: "2022 - 2023",
-    description: "Direction des campagnes sur les réseaux sociaux et optimisation de la présence web.",
+    role: "Chargée de communication digitale",
+    period: "Jan 2025 - Août 2025",
+    description: "Alternance",
     highlights: [
-      "Campagnes Google Ads",
-      "Social media management",
-      "Optimisation web",
-      "Relation client",
+      "Gestion réseaux sociaux & contenu",
+      "Accueil et accompagnement client",
+      "Analyse Google Analytics",
+      "Stratégie digitale & SEO/SEA",
+      "Gestion Fiche Google Établissement",
+      "Coordination événements",
+      "Campagnes Google Ads & Social Ads",
+      "Gestion commandes & assurances"
     ],
     color: "from-blue-500 to-cyan-600",
   },
   {
-    company: "ESP Bordeaux",
-    role: "Mastère 1 - Marketing d'Influence",
-    period: "2024 - 2025",
-    description: "Formation spécialisée en marketing d'influence et communication digitale.",
+    company: "Parc aventure de Fontdouce",
+    role: "Chargée de communication et événementielle",
+    period: "Nov 2023 - Août 2024",
+    description: "Alternance",
     highlights: [
-      "Stratégie d'influence",
-      "Content marketing",
-      "Analytics avancé",
-      "Gestion de projet",
+      "Gestion réseaux sociaux",
+      "Gestion projet (refonte site web)",
+      "Reporting & analyse résultats",
+      "Rédaction articles & contenus",
+      "Influence & partenariats",
+      "Animation team building",
+      "Optimisation SEO & CRO",
+      "Relation client & ventes",
+      "Montage Vidéo"
     ],
     color: "from-amber-500 to-orange-600",
-  },
-  {
-    company: "ESP Lille",
-    role: "Mastère 2 - Brand Content",
-    period: "2025 - 2026",
-    description: "Spécialisation en brand content et stratégie de marque.",
-    highlights: [
-      "Brand storytelling",
-      "Stratégie éditoriale",
-      "Production vidéo",
-      "Direction artistique",
-    ],
-    color: "from-emerald-500 to-teal-600",
   },
 ];
 
 const Experience = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const track = trackRef.current;
-      const container = containerRef.current;
-      
-      if (!track || !container) return;
+      if (!track) return;
 
-      // Calculate scroll distance
-      const scrollWidth = track.scrollWidth - container.offsetWidth;
+      const getScrollAmount = () => {
+        const trackWidth = track.scrollWidth;
+        return -(trackWidth - window.innerWidth + 64);
+      };
 
-      // Title animation
-      gsap.fromTo(
-        titleRef.current,
-        { x: -100, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            end: "top 50%",
-            scrub: 0.5,
-          },
-        }
-      );
-
-      // Horizontal scroll animation
-      const scrollTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: `+=${scrollWidth * 1.5}`,
-          pin: true,
-          scrub: 0.5,
-          anticipatePin: 1,
-        },
-      });
-
-      scrollTl.to(track, {
-        x: -scrollWidth,
+      const tween = gsap.to(track, {
+        x: getScrollAmount,
         ease: "none",
-      });
-
-      // Progress bar
-      scrollTl.to(
-        progressRef.current,
-        {
-          width: "100%",
-          ease: "none",
-        },
-        0
-      );
-
-      // Card entrance animations
-      const cards = track.querySelectorAll('.experience-card');
-      cards.forEach((card, i) => {
-        gsap.fromTo(
-          card,
-          { 
-            y: 50, 
-            opacity: 0,
-            rotateY: i % 2 === 0 ? 10 : -10,
-          },
-          {
-            y: 0,
-            opacity: 1,
-            rotateY: 0,
-            ease: "none",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: `top+=${i * 200} 80%`,
-              end: `top+=${i * 200 + 300} 50%`,
-              scrub: 0.5,
-            },
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          start: "top top",
+          end: () => `+=${track.scrollWidth - window.innerWidth}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            if (progressRef.current) {
+              gsap.set(progressRef.current, { width: `${self.progress * 100}%` });
+            }
           }
-        );
+        },
       });
-    }, sectionRef);
+
+      return () => {
+        tween.kill();
+      };
+    }, triggerRef);
 
     return () => ctx.revert();
   }, []);
@@ -162,123 +118,83 @@ const Experience = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen bg-brand-dark z-30 overflow-hidden"
+      className="relative bg-brand-dark overflow-hidden"
     >
-      {/* Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-purple/10 to-brand-dark" />
-        {/* Grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px',
-          }}
-        />
-      </div>
-
-      {/* Section title */}
-      <div
-        ref={titleRef}
-        className="absolute top-8 left-4 sm:left-8 z-20 will-change-transform"
-      >
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-1 bg-brand-rose rounded-full" />
-          <span className="text-white/50 text-sm uppercase tracking-widest">Parcours</span>
+      <div ref={triggerRef} className="h-screen flex flex-col justify-center">
+        {/* Section title */}
+        <div className="px-4 sm:px-8 mb-12">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-1 bg-brand-rose rounded-full" />
+            <span className="text-white/50 text-sm uppercase tracking-widest">Parcours</span>
+          </div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-white mt-2">
+            Expériences
+          </h2>
         </div>
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-white mt-2">
-          Expérience
-        </h2>
-      </div>
 
-      {/* Horizontal scroll container */}
-      <div
-        ref={containerRef}
-        className="relative h-screen flex items-center overflow-hidden"
-      >
-        <div
-          ref={trackRef}
-          className="flex gap-6 sm:gap-8 px-4 sm:px-8 pt-24 will-change-transform"
-          style={{ paddingLeft: 'max(1rem, calc((100vw - 1280px) / 2 + 1rem))' }}
-        >
-          {experiences.map((exp, index) => (
-            <div
-              key={index}
-              className="experience-card flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-[50vw] lg:w-[40vw] max-w-xl will-change-transform"
-              style={{ perspective: "1000px" }}
-            >
-              <div className="glass-card-strong rounded-3xl p-6 sm:p-8 h-full hover-lift group">
-                {/* Card header with gradient */}
-                <div className={`h-2 w-full rounded-full bg-gradient-to-r ${exp.color} mb-6`} />
-                
-                {/* Company & Role */}
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <div>
-                    <div className="flex items-center gap-2 text-white/50 text-sm mb-1">
-                      <Building2 className="w-4 h-4" />
-                      <span>Entreprise</span>
+        {/* Horizontal scroll container */}
+        <div className="relative">
+          <div
+            ref={trackRef}
+            className="flex gap-6 sm:gap-8 px-4 sm:px-8 will-change-transform"
+            style={{ width: "max-content" }}
+          >
+            {experiences.map((exp, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-[45vw] lg:w-[35vw] max-w-xl"
+              >
+                <div className="glass-card-strong rounded-3xl p-6 sm:p-8 h-full hover-lift group border border-white/10">
+                  <div className={`h-2 w-full rounded-full bg-gradient-to-r ${exp.color} mb-6`} />
+                  
+                  <div className="flex items-start justify-between gap-4 mb-4">
+                    <div>
+                      <div className="flex items-center gap-2 text-white/50 text-sm mb-1">
+                        <Building2 className="w-4 h-4" />
+                        <span>Entreprise</span>
+                      </div>
+                      <h3 className="text-xl sm:text-2xl font-heading font-bold text-white group-hover:text-brand-rose transition-colors">
+                        {exp.company}
+                      </h3>
                     </div>
-                    <h3 className="text-xl sm:text-2xl font-heading font-bold text-white group-hover:text-brand-rose transition-colors">
-                      {exp.company}
-                    </h3>
+                    <div className="flex items-center gap-2 text-white/50 text-sm whitespace-nowrap">
+                      <Calendar className="w-4 h-4" />
+                      <span>{exp.period}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 text-white/50 text-sm whitespace-nowrap">
-                    <Calendar className="w-4 h-4" />
-                    <span>{exp.period}</span>
+
+                  <p className="text-brand-rose font-medium mb-2">{exp.role}</p>
+                  <p className="text-white/40 text-xs mb-4 uppercase tracking-wider">{exp.description}</p>
+
+                  <div className="space-y-2 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                    <div className="flex flex-wrap gap-2">
+                      {exp.highlights.map((highlight, i) => (
+                        <span
+                          key={i}
+                          className="px-3 py-1.5 rounded-lg glass-card text-white/70 text-xs font-medium border border-white/5"
+                        >
+                          {highlight}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-
-                {/* Role */}
-                <p className="text-brand-rose font-medium mb-4">{exp.role}</p>
-
-                {/* Description */}
-                <p className="text-white/60 text-sm leading-relaxed mb-6">
-                  {exp.description}
-                </p>
-
-                {/* Highlights */}
-                <div className="space-y-2">
-                  <p className="text-white/40 text-xs uppercase tracking-wider">Compétences clés</p>
-                  <div className="flex flex-wrap gap-2">
-                    {exp.highlights.map((highlight, i) => (
-                      <span
-                        key={i}
-                        className="px-3 py-1.5 rounded-lg glass-card text-white/70 text-xs font-medium"
-                      >
-                        {highlight}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Arrow indicator */}
-                <div className="mt-6 flex items-center gap-2 text-white/30 group-hover:text-brand-rose transition-colors">
-                  <span className="text-sm">Voir plus</span>
-                  <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
-            </div>
-          ))}
-
-          {/* End spacer */}
-          <div className="flex-shrink-0 w-8 sm:w-16" />
+            ))}
+            {/* End spacer */}
+            <div className="flex-shrink-0 w-8 sm:w-16" />
+          </div>
         </div>
-      </div>
 
-      {/* Progress bar */}
-      <div className="absolute bottom-8 left-4 sm:left-8 right-4 sm:right-8 z-20">
-        <div className="h-1 bg-white/10 rounded-full overflow-hidden">
-          <div
-            ref={progressRef}
-            className="h-full bg-gradient-to-r from-brand-rose to-brand-purple rounded-full will-change-transform"
-            style={{ width: "0%" }}
-          />
-        </div>
-        <div className="flex justify-between mt-2 text-white/30 text-xs">
-          <span>Début</span>
-          <span>Scroll horizontal</span>
-          <span>Présent</span>
+        {/* Progress bar */}
+        <div className="absolute bottom-8 left-4 right-4 sm:left-8 sm:right-8 z-20">
+          <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+            <div
+              ref={progressRef}
+              className="h-full bg-gradient-to-r from-brand-rose to-brand-purple rounded-full will-change-transform"
+              style={{ width: "0%" }}
+            />
+          </div>
         </div>
       </div>
     </section>

@@ -9,17 +9,16 @@ import Profile from './sections/Profile';
 import Experience from './sections/Experience';
 import Skills from './sections/Skills';
 import Projects from './sections/Projects';
-import PretextShowcase from './sections/PretextShowcase';
+import Formation from './sections/Formation';
 import Contact from './sections/Contact';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const navItems = [
-  { label: 'Accueil', href: '#hero' },
   { label: 'Profil', href: '#profile' },
   { label: 'Expérience', href: '#experience' },
   { label: 'Compétences', href: '#skills' },
-  { label: 'Philosophie', href: '#philosophy' },
+  { label: 'Formation', href: '#formation' },
   { label: 'Projets', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -27,7 +26,7 @@ const navItems = [
 function App() {
   const [isNavVisible, setIsNavVisible] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState('profile');
   const navRef = useRef<HTMLElement>(null);
   const mainRef = useRef<HTMLElement>(null);
 
@@ -35,8 +34,8 @@ function App() {
     // Show nav after scrolling past hero
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const heroHeight = window.innerHeight;
-      setIsNavVisible(scrollY > heroHeight * 0.5);
+      const heroHeight = 200; // Hero is now a compact header
+      setIsNavVisible(scrollY > heroHeight);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -45,7 +44,7 @@ function App() {
 
   useEffect(() => {
     // Track active section
-    const sections = ['hero', 'profile', 'experience', 'skills', 'philosophy', 'projects', 'contact'];
+    const sections = ['profile', 'experience', 'skills', 'formation', 'projects', 'contact'];
     
     sections.forEach((sectionId) => {
       const element = document.getElementById(sectionId);
@@ -197,9 +196,7 @@ function App() {
 
       {/* Main content */}
       <main ref={mainRef} className="relative">
-        <div id="hero">
-          <Hero />
-        </div>
+        <Hero />
         <div id="profile">
           <Profile />
         </div>
@@ -209,8 +206,8 @@ function App() {
         <div id="skills">
           <Skills />
         </div>
-        <div id="philosophy">
-          <PretextShowcase />
+        <div id="formation">
+          <Formation />
         </div>
         <div id="projects">
           <Projects />
