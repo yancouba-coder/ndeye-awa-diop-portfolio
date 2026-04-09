@@ -170,10 +170,14 @@ const Profile = () => {
                 </div>
 
                 {/* CTA */}
-                <button className="btn-primary w-full sm:w-auto flex items-center justify-center gap-2">
+                <a 
+                  href="/Cv Awa Diop.pdf" 
+                  download="Cv Awa Diop.pdf"
+                  className="btn-primary w-full sm:w-auto flex items-center justify-center gap-2 no-underline"
+                >
                   <Download className="w-4 h-4" />
                   Télécharger mon CV
-                </button>
+                </a>
               </div>
             </div>
           </div>

@@ -11,6 +11,7 @@ import Skills from './sections/Skills';
 import Projects from './sections/Projects';
 import Formation from './sections/Formation';
 import Contact from './sections/Contact';
+import ScrollInvite from './components/ScrollInvite';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -217,7 +218,8 @@ function App() {
         </div>
       </main>
 
-      {/* Custom cursor (desktop only) */}
+      {/* Custom items */}
+      <ScrollInvite />
       <CustomCursor />
     </div>
   );

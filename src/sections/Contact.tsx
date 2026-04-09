@@ -55,12 +55,33 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch('https://formspree.io/f/mqapvvep', { // Note: Remplacer par votre Form ID Formspree pour plus de sécurité
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          ...formData,
+          _subject: `Nouveau message de ${formData.name}: ${formData.subject}`
+        })
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    toast.success('Message envoyé avec succès ! Je vous répondrai bientôt.');
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        toast.success('Message envoyé avec succès ! Je vous répondrai bientôt.');
+      } else {
+        const data = await response.json();
+        throw new Error(data.error || 'Erreur lors de l’envoi');
+      }
+    } catch (error) {
+      console.error('Contact Form Error:', error);
+      toast.error('Une erreur est survenue lors de l’envoi du message. Veuillez réessayer.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -223,7 +244,7 @@ const Contact = () => {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-rose focus:ring-2 focus:ring-brand-rose/20 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-rose focus:ring-2 focus:ring-brand-rose/20 outline-none transition-all text-gray-900"
                         placeholder="Jean Dupont"
                       />
                     </div>
@@ -238,7 +259,7 @@ const Contact = () => {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-rose focus:ring-2 focus:ring-brand-rose/20 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-rose focus:ring-2 focus:ring-brand-rose/20 outline-none transition-all text-gray-900"
                         placeholder="jean@exemple.com"
                       />
                     </div>
@@ -254,7 +275,7 @@ const Contact = () => {
                       required
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-rose focus:ring-2 focus:ring-brand-rose/20 outline-none transition-all bg-white"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-rose focus:ring-2 focus:ring-brand-rose/20 outline-none transition-all bg-white text-gray-900"
                     >
                       <option value="">Sélectionnez un sujet</option>
                       <option value="project">Projet de communication</option>
@@ -275,7 +296,7 @@ const Contact = () => {
                       rows={5}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-rose focus:ring-2 focus:ring-brand-rose/20 outline-none transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-rose focus:ring-2 focus:ring-brand-rose/20 outline-none transition-all resize-none text-gray-900"
                       placeholder="Décrivez votre projet..."
                     />
                   </div>
