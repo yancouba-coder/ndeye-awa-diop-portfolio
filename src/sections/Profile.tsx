@@ -115,11 +115,14 @@ const Profile = () => {
                 </div>
 
                 {/* Bio */}
-                <p className="text-white/70 leading-relaxed text-sm sm:text-base">
-                  Passionnée par la création de récits numériques qui connectent. 
-                  Je construis des ponts entre les marques et leurs audiences à travers 
-                  un contenu stratégique, une maîtrise des réseaux sociaux et des 
-                  insights basés sur les données.
+                <p className="text-white/70 leading-relaxed text-xs sm:text-base text-justify">
+                  Je conçois des dispositifs de communication qui ne se limitent pas à un format.
+
+Ce qui m’intéresse, c’est de penser un projet dans son ensemble : comprendre les enjeux, structurer une stratégie, imaginer une expérience et la déployer de manière cohérente.
+
+<br/> Entre stratégie de marque, digital et événementiel, j’interviens sur toutes les dimensions d’un projet, de l’idée à sa mise en œuvre.
+
+J’aime créer des univers, coordonner des actions et donner du sens à chaque choix pour construire des dispositifs à la fois cohérents, utiles et impactants.
                 </p>
 
                 {/* Location */}
@@ -147,7 +150,7 @@ const Profile = () => {
                 {/* Social links */}
                 <div className="flex items-center gap-3">
                   <a
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/in/ndeye-awa-diop-494046251/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-white/70 hover:text-white hover:bg-brand-rose/20 transition-all duration-300"
