@@ -55,12 +55,33 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch('https://formspree.io/f/mqapvvep', { // Note: Remplacer par votre Form ID Formspree pour plus de sécurité
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          ...formData,
+          _subject: `Nouveau message de ${formData.name}: ${formData.subject}`
+        })
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    toast.success('Message envoyé avec succès ! Je vous répondrai bientôt.');
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        toast.success('Message envoyé avec succès ! Je vous répondrai bientôt.');
+      } else {
+        const data = await response.json();
+        throw new Error(data.error || 'Erreur lors de l’envoi');
+      }
+    } catch (error) {
+      console.error('Contact Form Error:', error);
+      toast.error('Une erreur est survenue lors de l’envoi du message. Veuillez réessayer.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
