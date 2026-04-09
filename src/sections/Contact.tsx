@@ -51,21 +51,21 @@ const Contact = () => {
     return () => ctx.revert();
   }, []);
 
+  const encode = (data: any) => {
+    return Object.keys(data)
+      .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://formspree.io/f/mqapvvep', { // Note: Remplacer par votre Form ID Formspree pour plus de sécurité
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          ...formData,
-          _subject: `Nouveau message de ${formData.name}: ${formData.subject}`
-        })
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ "form-name": "contact", ...formData }),
       });
 
       if (response.ok) {
@@ -73,11 +73,10 @@ const Contact = () => {
         setFormData({ name: '', email: '', subject: '', message: '' });
         toast.success('Message envoyé avec succès ! Je vous répondrai bientôt.');
       } else {
-        const data = await response.json();
-        throw new Error(data.error || 'Erreur lors de l’envoi');
+        throw new Error('Erreur lors de l’envoi');
       }
     } catch (error) {
-      console.error('Contact Form Error:', error);
+      console.error('Netlify Form Error:', error);
       toast.error('Une erreur est survenue lors de l’envoi du message. Veuillez réessayer.');
     } finally {
       setIsSubmitting(false);
@@ -173,7 +172,7 @@ const Contact = () => {
               </h3>
               <div className="flex gap-3">
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/ndeye-awa-diop-494046251/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-xl bg-[#0077B5]/10 flex items-center justify-center text-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all duration-300"
@@ -231,7 +230,14 @@ const Contact = () => {
                   </button>
                 </div>
               ) : (
-                <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                <form 
+                  ref={formRef} 
+                  onSubmit={handleSubmit} 
+                  className="space-y-6"
+                  name="contact"
+                  data-netlify="true"
+                >
+                  <input type="hidden" name="form-name" value="contact" />
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">

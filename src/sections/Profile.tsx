@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Linkedin, Instagram, Mail, Download, MapPin, Briefcase } from 'lucide-react';
+import profileImage from '../assets/images/profile-photo.jpeg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,9 +77,9 @@ const Profile = () => {
                 className="absolute inset-0 will-change-transform"
               >
                 <img 
-                  src="/assets/images/awa-profile-1.jpg" 
-                  alt="Ndeye Awa Diop"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  src={profileImage}
+                  alt="Awa Diop"
+                  className="w-full h-full object-cover"
                 />
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/60 via-transparent to-transparent md:bg-gradient-to-r" />

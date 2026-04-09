@@ -198,7 +198,7 @@ const Experience = () => {
         </div>
 
         {/* Progress bar */}
-        <div className="absolute bottom-8 left-4 right-4 sm:left-8 sm:right-8 z-20">
+        <div className="px-4 sm:px-8 mt-12">
           <div className="h-1 bg-white/10 rounded-full overflow-hidden">
             <div
               ref={progressRef}
@@ -207,6 +207,7 @@ const Experience = () => {
             />
           </div>
         </div>
+
       </div>
 
       {/* Detail Modal Overlay */}
