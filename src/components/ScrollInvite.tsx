@@ -48,7 +48,7 @@ const ScrollInvite = () => {
         className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-medium vertical-text"
         style={{ writingMode: 'vertical-rl' }}
       >
-        Scroll to explore
+        Défiler pour découvrir
       </div>
       <div className="relative w-[1px] h-24 bg-white/10 overflow-hidden">
         <div 
