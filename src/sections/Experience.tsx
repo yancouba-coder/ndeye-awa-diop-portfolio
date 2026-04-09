@@ -1,75 +1,67 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Calendar, Building2 } from 'lucide-react';
+import { Calendar, Building2, X, ArrowUpRight, Trophy, Target, Zap } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface ExperienceItem {
+  id: string;
   company: string;
   role: string;
   period: string;
   description: string;
   highlights: string[];
   color: string;
+  story: string;
+  achievements: string[];
 }
 
 const experiences: ExperienceItem[] = [
   {
+    id: "m-comme-mutuelle",
     company: "M comme Mutuelle",
     role: "Chargée de communication",
     period: "Sept 2025 - Sept 2026",
-    description: "Alternance",
-    highlights: [
-      "Gestion et coordination d'événements",
-      "Création de contenus digitaux",
-      "Planification éditoriale",
-      "Gestion et animation des réseaux sociaux",
-      "Modération et e-réputation",
-      "Analyse et suivi des KPI",
-      "Pilotage de la communication agences",
-      "Gestion des partenariats",
-      "Montage et production vidéo",
-      "Optimisation contenus site web",
-      "Suivi et gestion budgétaire",
-      "Coordination prestataires externes"
-    ],
+    description: "Alternance Stratégique",
+    highlights: ["Brand Content", "Événementiel", "Planification Éditoriale", "Vidéo"],
     color: "from-rose-500 to-purple-600",
+    story: "Au cœur d'une mutuelle d'envergure, j'ai orchestré la transition vers un storytelling plus humain et engageant. Mon rôle a été de transformer la communication institutionnelle en un récit vivant, capable de créer un véritable lien émotionnel avec nos adhérents tout en pilotant des projets transverses complexes.",
+    achievements: [
+      "Optimisation de la stratégie éditoriale sur 3 leviers majeurs",
+      "Coordination d'événements à fort impact (300+ participants)",
+      "Production d'un catalogue vidéo digital complet"
+    ],
   },
   {
+    id: "oparebrise33",
     company: "Oparebrise33",
     role: "Chargée de communication digitale",
     period: "Jan 2025 - Août 2025",
-    description: "Alternance",
-    highlights: [
-      "Gestion réseaux sociaux & contenu",
-      "Accueil et accompagnement client",
-      "Analyse Google Analytics",
-      "Stratégie digitale & SEO/SEA",
-      "Gestion Fiche Google Établissement",
-      "Coordination événements",
-      "Campagnes Google Ads & Social Ads",
-      "Gestion commandes & assurances"
-    ],
+    description: "Alternance Performance",
+    highlights: ["SEO/SEA", "Google Ads", "Analytique", "E-réputation"],
     color: "from-blue-500 to-cyan-600",
+    story: "Focus sur la performance et la visibilité locale. J'ai eu la responsabilité de l'intégralité de l'écosystème numérique d'Oparebrise33, avec un objectif clair : maximiser l'acquisition client via des canaux digitaux optimisés et une stratégie SEO/SEA rigoureuse.",
+    achievements: [
+      "Optimisation du CAC via des campagnes Google Ads ciblées",
+      "Amélioration significative du référencement local (GMB)",
+      "Mise en place d'un tunnel de conversion optimisé sur le site web"
+    ],
   },
   {
+    id: "fontdouce",
     company: "Parc aventure de Fontdouce",
     role: "Chargée de communication et événementielle",
     period: "Nov 2023 - Août 2024",
-    description: "Alternance",
-    highlights: [
-      "Gestion réseaux sociaux",
-      "Gestion projet (refonte site web)",
-      "Reporting & analyse résultats",
-      "Rédaction articles & contenus",
-      "Influence & partenariats",
-      "Animation team building",
-      "Optimisation SEO & CRO",
-      "Relation client & ventes",
-      "Montage Vidéo"
-    ],
+    description: "Alternance Créative",
+    highlights: ["Refonte Web", "Influence Marketing", "SEO/CRO", "Animation"],
     color: "from-amber-500 to-orange-600",
+    story: "Une expérience immersive mêlant gestion de projet web et marketing d'influence. J'ai piloté la refonte de l'image digitale du parc, en alliant stratégie de contenu visuelle et optimisation technique pour garantir une expérience utilisateur fluide et moderne.",
+    achievements: [
+      "Pilotage de la refonte du site internet et optimisation du CRO",
+      "Développement de partenariats stratégiques avec des influenceurs",
+      "Hausse notable de la conversion via le nouveau tunnel de vente"
+    ],
   },
 ];
 
@@ -78,6 +70,7 @@ const Experience = () => {
   const triggerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
+  const [selectedExp, setSelectedExp] = useState<ExperienceItem | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -116,10 +109,7 @@ const Experience = () => {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative bg-brand-dark overflow-hidden"
-    >
+    <section ref={sectionRef} className="relative bg-brand-dark overflow-hidden">
       <div ref={triggerRef} className="h-screen flex flex-col justify-center">
         {/* Section title */}
         <div className="px-4 sm:px-8 mb-12">
@@ -144,7 +134,7 @@ const Experience = () => {
                 key={index}
                 className="flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-[45vw] lg:w-[35vw] max-w-xl"
               >
-                <div className="glass-card-strong rounded-3xl p-6 sm:p-8 h-full hover-lift group border border-white/10">
+                <div className="glass-card-strong rounded-3xl p-6 sm:p-8 h-full hover-lift group border border-white/10 flex flex-col">
                   <div className={`h-2 w-full rounded-full bg-gradient-to-r ${exp.color} mb-6`} />
                   
                   <div className="flex items-start justify-between gap-4 mb-4">
@@ -166,22 +156,27 @@ const Experience = () => {
                   <p className="text-brand-rose font-medium mb-2">{exp.role}</p>
                   <p className="text-white/40 text-xs mb-4 uppercase tracking-wider">{exp.description}</p>
 
-                  <div className="space-y-2 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
-                    <div className="flex flex-wrap gap-2">
-                      {exp.highlights.map((highlight, i) => (
-                        <span
-                          key={i}
-                          className="px-3 py-1.5 rounded-lg glass-card text-white/70 text-xs font-medium border border-white/5"
-                        >
-                          {highlight}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {exp.highlights.slice(0, 4).map((highlight, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1.5 rounded-lg glass-card text-white/70 text-xs font-medium border border-white/5"
+                      >
+                        {highlight}
+                      </span>
+                    ))}
                   </div>
+
+                  <button 
+                    onClick={() => setSelectedExp(exp)}
+                    className="mt-auto group/btn flex items-center gap-2 text-white/40 hover:text-brand-rose transition-colors text-sm font-medium"
+                  >
+                    Voir plus
+                    <ArrowUpRight className="w-4 h-4 transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                  </button>
                 </div>
               </div>
             ))}
-            {/* End spacer */}
             <div className="flex-shrink-0 w-8 sm:w-16" />
           </div>
         </div>
@@ -197,6 +192,67 @@ const Experience = () => {
           </div>
         </div>
       </div>
+
+      {/* Detail Modal Overlay */}
+      {selectedExp && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div 
+            className="absolute inset-0 bg-brand-dark/90 backdrop-blur-xl"
+            onClick={() => setSelectedExp(null)}
+          />
+          
+          <div className="relative w-full max-w-2xl glass-card-strong rounded-3xl overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-300">
+            <div className={`h-2 bg-gradient-to-r ${selectedExp.color}`} />
+            
+            <div className="p-8 sm:p-12">
+              <button 
+                onClick={() => setSelectedExp(null)}
+                className="absolute top-6 right-6 w-10 h-10 rounded-full glass-card flex items-center justify-center text-white/60 hover:text-white transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="mb-8">
+                <div className="flex items-center gap-2 text-brand-rose text-sm font-medium mb-2">
+                  <Target className="w-4 h-4" />
+                  <span>Impact Stratégique</span>
+                </div>
+                <h3 className="text-3xl font-heading font-bold text-white mb-2">{selectedExp.company}</h3>
+                <p className="text-white/60 mb-6 leading-relaxed">
+                  {selectedExp.story}
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                <div>
+                  <div className="flex items-center gap-2 text-white/40 text-xs uppercase tracking-widest mb-4">
+                    <Trophy className="w-4 h-4 text-amber-500" />
+                    <span>Réalisations Clés</span>
+                  </div>
+                  <div className="grid gap-4">
+                    {selectedExp.achievements.map((item, i) => (
+                      <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 group hover:bg-white/10 transition-colors">
+                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-brand-purple/20 flex items-center justify-center border border-brand-purple/30">
+                          <Zap className="w-4 h-4 text-brand-purple" />
+                        </div>
+                        <p className="text-white/80 text-sm leading-relaxed">{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-12 flex flex-wrap gap-2">
+                {selectedExp.highlights.map((tag, i) => (
+                  <span key={i} className="px-4 py-2 rounded-xl bg-white/5 text-white/40 text-xs font-medium border border-white/10">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
