@@ -12,7 +12,7 @@ const ScrollInvite = () => {
       gsap.fromTo(
         containerRef.current,
         { x: 100, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1.5, ease: 'power4.out', delay: 2 }
+        { x: 0, opacity: 1, duration: 1.5, ease: 'power4.out', delay: 0.5 }
       );
 
       // Endless pulse
@@ -32,18 +32,6 @@ const ScrollInvite = () => {
         yoyo: true,
         duration: 2,
         ease: 'power1.inOut',
-      });
-
-      // Fade out on scroll
-      gsap.to(containerRef.current, {
-        opacity: 0,
-        x: 50,
-        scrollTrigger: {
-          trigger: 'body',
-          start: 'top top',
-          end: '+=200',
-          scrub: true,
-        },
       });
     }, containerRef);
 
