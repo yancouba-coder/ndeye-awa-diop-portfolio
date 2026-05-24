@@ -61,7 +61,7 @@ const experiences: ExperienceItem[] = [
     description: "Alternance Événementielle",
     highlights: ["Brand Content", "Réseaux Sociaux", "SEO", "Événementiel", "Communication", "Influence"],
     color: "from-amber-400 to-orange-500",
-    story: "Expérience au sein d’une agence événementielle et créative où j’ai participé au développement de la communication de marque, à la création de contenus et à la coordination de projets événementiels. Cette immersion m’a permis d’évoluer dans un environnement dynamique mêlant stratégie de contenu, communication digitale et organisation d’événements premium.",
+    story: "Expérience au sein d’une agence événementielle où j’ai participé au développement de la communication de marque, à la création de contenus et à la coordination de projets événementiels. Cette immersion m’a permis d’évoluer dans un environnement dynamique mêlant stratégie de contenu, communication digitale et organisation d’événements premium.",
     achievements: [
       "Participation à la stratégie de communication et de contenu de l’agence",
       "Création et gestion de contenus digitaux pour différents supports",
