@@ -43,7 +43,7 @@ const Hero = () => {
 
         {/* Subtitle */}
         <p className="mt-6 sm:mt-8 text-lg sm:text-xl md:text-2xl text-white/80 font-body font-light tracking-wide">
-          Chargée de Communication Digitale & Brand Content
+          Chargée de communication et marketing digital
         </p>
 
         {/* Location badge */}

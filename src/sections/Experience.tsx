@@ -24,44 +24,49 @@ const experiences: ExperienceItem[] = [
     role: "Chargée de communication",
     period: "Sept 2025 - Sept 2026",
     description: "Alternance Stratégique",
-    highlights: ["Brand Content", "Événementiel", "Planification Éditoriale", "Vidéo"],
+    highlights: ["Brand Content", "Communication digitale", "Événementiel", "Réseaux Sociaux", "Gestion de projet"],
     color: "from-rose-500 to-purple-600",
-    story: "Au cœur d'une mutuelle d'envergure, j'ai orchestré la transition vers un storytelling plus humain et engageant. Mon rôle a été de transformer la communication institutionnelle en un récit vivant, capable de créer un véritable lien émotionnel avec nos adhérents tout en pilotant des projets transverses complexes.",
+    story: "Au sein de M comme Mutuelle, j’ai participé au développement de la communication digitale et événementielle de l’entreprise à travers des projets transverses mêlant création de contenu, coordination, communication institutionnelle, rédaction et valorisation de l’image de marque. Cette expérience m’a permis de contribuer à des actions de communication à forte dimension humaine, en accompagnant la mise en avant des initiatives de la mutuelle tout en participant à la gestion de projets, à l’organisation d’événements et au suivi des performances des actions menées.",
     achievements: [
-      "Optimisation de la stratégie éditoriale sur 3 leviers majeurs",
-      "Coordination d'événements à fort impact (300+ participants)",
-      "Production d'un catalogue vidéo digital complet"
-    ],
-  },
-  {
-    id: "zola-media",
-    company: "Zola Média",
-    role: "Chargée de communication et marketing",
-    period: "Sept 2025 - Déc 2025",
-    description: "Alternance Événementielle",
-    highlights: ["Stratégie de Marque", "Réseaux Sociaux", "SEO", "Influence"],
-    color: "from-amber-400 to-orange-500",
-    story: "Au sein de l'agence événementielle Zola Média, j'ai porté la voix de l'agence à travers une stratégie de brand content omnicanale et une coordination événementielle rigoureuse. Cette immersion m'a permis de conjuguer créativité graphique et optimisation technique SEO pour servir des événements premium.",
-    achievements: [
-      "Définition et mise en œuvre de la stratégie de marque globale",
-      "Gestion des réseaux sociaux et création de contenus engagés",
-      "Rédaction de contenus optimisés SEO et administration web",
-      "Coordination logistique et participation à des événements privés"
+      "Participation à la stratégie de communication et à la coordination des projets digitaux",
+      "Contribution à la création et à la diffusion de contenus éditoriaux et visuels",
+      "Participation à l’organisation et à la coordination d’événements internes et externes",
+      "Animation des réseaux sociaux et accompagnement de la communauté en ligne",
+      "Suivi des performances et analyse des résultats des actions de communication"
     ],
   },
   {
     id: "oparebrise33",
-    company: "Oparebrise33",
+    company: "Oparebrise 33",
     role: "Chargée de communication digitale",
     period: "Jan 2025 - Août 2025",
     description: "Alternance Performance",
-    highlights: ["SEO/SEA", "Google Ads", "Analytique", "E-réputation"],
+    highlights: ["SEO/SEA", "Google Ads", "Acquisition", "Réseaux Sociaux", "Analytique", "Communication Digitale"],
     color: "from-blue-500 to-cyan-600",
-    story: "Focus sur la performance et la visibilité locale. J'ai eu la responsabilité de l'intégralité de l'écosystème numérique d'Oparebrise33, avec un objectif clair : maximiser l'acquisition client via des canaux digitaux optimisés et une stratégie SEO/SEA rigoureuse.",
+    story: "Participation au développement digital et à la stratégie de visibilité locale de l’entreprise à travers des actions mêlant communication, marketing digital et optimisation de la présence en ligne. J’ai contribué à la gestion globale de l’image numérique de la structure, avec une approche orientée acquisition, performance et expérience utilisateur.",
     achievements: [
-      "Optimisation du CAC via des campagnes Google Ads ciblées",
-      "Amélioration significative du référencement local (GMB)",
-      "Mise en place d'un tunnel de conversion optimisé sur le site web"
+      "Participation à la stratégie digitale et au pilotage des actions de communication",
+      "Contribution à l’optimisation de la visibilité locale et du référencement",
+      "Gestion et animation des réseaux sociaux ainsi que des campagnes publicitaires",
+      "Participation à l’amélioration du site internet et du tunnel de conversion",
+      "Analyse des performances digitales et suivi des résultats des campagnes",
+      "Coordination avec différents partenaires et accompagnement de la relation client"
+    ],
+  },
+  {
+    id: "zola-media",
+    company: "Zola média",
+    role: "Chargée de communication et marketing",
+    period: "Sept 2024 - Déc 2025",
+    description: "Alternance Événementielle",
+    highlights: ["Brand Content", "Réseaux Sociaux", "SEO", "Événementiel", "Communication", "Influence"],
+    color: "from-amber-400 to-orange-500",
+    story: "Expérience au sein d’une agence événementielle et créative où j’ai participé au développement de la communication de marque, à la création de contenus et à la coordination de projets événementiels. Cette immersion m’a permis d’évoluer dans un environnement dynamique mêlant stratégie de contenu, communication digitale et organisation d’événements premium.",
+    achievements: [
+      "Participation à la stratégie de communication et de contenu de l’agence",
+      "Création et gestion de contenus digitaux pour différents supports",
+      "Contribution à l’animation des réseaux sociaux et à l’engagement des communautés",
+      "Participation à la coordination et à l’organisation d’événements"
     ],
   },
   {
@@ -70,13 +75,15 @@ const experiences: ExperienceItem[] = [
     role: "Chargée de communication et événementielle",
     period: "Nov 2023 - Août 2024",
     description: "Alternance Créative",
-    highlights: ["Refonte Web", "Influence Marketing", "SEO/CRO", "Animation"],
+    highlights: ["Refonte Web", "Communication Digitale", "SEO/CRO", "Réseaux Sociaux", "Influence", "Gestion de projet"],
     color: "from-emerald-500 to-teal-600",
-    story: "Une expérience immersive mêlant gestion de projet web et marketing d'influence. J'ai piloté la refonte de l'image digitale du parc, en alliant stratégie de contenu visuelle et optimisation technique pour garantir une expérience utilisateur fluide et moderne.",
+    story: "Chargée de communication et événementiel au sein d’un parc de loisirs, j’ai contribué au développement de la visibilité digitale et à l’amélioration de l’expérience client à travers des actions de communication, de marketing digital et de gestion de projet. Cette expérience m’a permis de participer à la stratégie de communication globale de la structure, en intervenant aussi bien sur la création de contenu, l’animation des réseaux sociaux, l’optimisation du site web que la coordination d’actions promotionnelles et événementielles.",
     achievements: [
-      "Pilotage de la refonte du site internet et optimisation du CRO",
-      "Développement de partenariats stratégiques avec des influenceurs",
-      "Hausse notable de la conversion via le nouveau tunnel de vente"
+      "Participation à la gestion et à l’évolution de l’écosystème digital du parc",
+      "Contribution à la stratégie de contenu et à la communication sur les réseaux sociaux",
+      "Accompagnement de la refonte et de l’optimisation du site internet",
+      "Développement de la visibilité en ligne via le SEO, le CRO et les contenus éditoriaux",
+      "Soutien aux actions événementielles et à l’expérience client"
     ],
   },
 ];

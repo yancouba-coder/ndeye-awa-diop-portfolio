@@ -1,7 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Eye, MessageCircle, ArrowUpRight, X, Target, Lightbulb, TrendingUp, ArrowRight } from 'lucide-react';
+import { Eye, MessageCircle, ArrowUpRight, X, Target, Lightbulb, TrendingUp, ArrowRight, Trophy } from 'lucide-react';
+
+import mMutuelleImg from '../assets/images/projects/m_comme_mutuelle.jpg';
+import oparebriseImg from '../assets/images/projects/oparebrise_33.jpg';
+import zolaMediaImg from '../assets/images/projects/zola_media.jpg';
+import fontdouceImg from '../assets/images/projects/fontdouce.jpg';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,7 +34,7 @@ const projects: Project[] = [
     title: "M comme Mutuelle",
     category: "Événementiel & Activation",
     description: "Piloter une stratégie d’activation sur un événement à fort impact.",
-    image: "project1",
+    image: mMutuelleImg,
     stats: { views: "125K", likes: "8.5K", engagement: "12%" },
     color: "from-rose-500 to-pink-600",
     challenge: "Valoriser la présence de la mutuelle en tant que partenaire majeur d’un événement d’envergure, en créant une expérience visible, engageante et cohérente avec son image.",
@@ -45,7 +51,7 @@ const projects: Project[] = [
     title: "Oparebrise 33",
     category: "SEO & Digital Local",
     description: "Positionner la marque en première position sur les recherches locales.",
-    image: "project2",
+    image: oparebriseImg,
     stats: { views: "89K", likes: "5.2K", engagement: "8.5%" },
     color: "from-blue-500 to-cyan-600",
     challenge: "Améliorer la visibilité locale de l’entreprise dans un environnement concurrentiel et générer du trafic qualifié via les moteurs de recherche.",
@@ -61,7 +67,7 @@ const projects: Project[] = [
     title: "Zola média",
     category: "Communication 360°",
     description: "Construire une stratégie de communication pour un événement local.",
-    image: "project3",
+    image: zolaMediaImg,
     stats: { views: "200K", likes: "-", engagement: "+45%" },
     color: "from-emerald-500 to-teal-600",
     challenge: "Concevoir une stratégie de communication complète pour le lancement et la promotion d’un événement local de grande ampleur.",
@@ -77,7 +83,7 @@ const projects: Project[] = [
     title: "Parc aventure Fontdouce",
     category: "UX/UI & Web Performance",
     description: "Refondre un site pour améliorer navigation et performance.",
-    image: "project4",
+    image: fontdouceImg,
     stats: { views: "56K", likes: "3.8K", engagement: "15%" },
     color: "from-amber-500 to-orange-600",
     challenge: "Repenser entièrement l’expérience digitale du site pour améliorer la lisibilité, l’attractivité et la fluidité de la navigation.",
@@ -90,11 +96,14 @@ const projects: Project[] = [
   },
 ];
 
+
 const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
   const [isVaultOpen, setIsVaultOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -182,26 +191,25 @@ const Projects = () => {
 
         {/* Projects grid */}
         <div ref={cardsRef} className="grid md:grid-cols-2 gap-6" style={{ perspective: "1000px" }}>
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <div
               key={project.id}
-              className="project-card will-change-transform"
+              className="project-card will-change-transform cursor-pointer"
+              onClick={() => setSelectedProject(project)}
             >
               <div className="group relative glass-card-strong rounded-3xl overflow-hidden hover-lift">
-                <div className={`relative h-56 sm:h-64 bg-gradient-to-br ${project.color} overflow-hidden`}>
-                  <div className="absolute inset-0 opacity-30" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)`, backgroundSize: '24px 24px' }} />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative w-32 h-32 text-center">
-                      <div className="absolute inset-0 bg-white/10 rounded-full animate-ping" style={{ animationDuration: '3s' }} />
-                      <div className="absolute inset-8 bg-white/20 rounded-full flex items-center justify-center">
-                        <span className="text-4xl font-heading font-bold text-white/40">{String(index + 1).padStart(2, '0')}</span>
-                      </div>
-                    </div>
-                  </div>
+                <div className={`relative h-56 sm:h-64 overflow-hidden`}>
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent" />
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-1.5 rounded-full glass-card text-white text-xs font-medium">{project.category}</span>
                   </div>
                 </div>
+
 
                 <div className="p-6">
                   <h3 className="text-xl font-heading font-bold text-white mb-2 group-hover:text-brand-rose transition-colors">{project.title}</h3>
@@ -239,7 +247,7 @@ const Projects = () => {
                 <div className="w-12 h-1 bg-brand-rose rounded-full" />
                 <span className="text-white/50 text-sm uppercase tracking-widest">Storytelling</span>
               </div>
-              <h1 className="text-5xl sm:text-7xl font-heading font-bold text-white">Le Digital Vault</h1>
+              <h1 className="text-5xl sm:text-7xl font-heading font-bold text-white">Mes Projets</h1>
             </div>
 
             <div className="space-y-32">
@@ -247,13 +255,16 @@ const Projects = () => {
                 <div key={project.id} className="grid lg:grid-cols-2 gap-16 items-start">
                   {/* Visual Side */}
                   <div className="relative group">
-                    <div className={`aspect-video rounded-3xl bg-gradient-to-br ${project.color} overflow-hidden`}>
-                       <div className="absolute inset-0 opacity-20" style={{ backgroundImage: `url('/grid.svg')`, backgroundSize: '40px'}} />
-                       <div className="absolute inset-0 flex items-center justify-center">
-                          <Eye className="w-20 h-20 text-white/10 group-hover:scale-110 transition-transform duration-500" />
-                       </div>
+                    <div className={`aspect-video rounded-3xl overflow-hidden`}>
+                       <img 
+                         src={project.image} 
+                         alt={project.title}
+                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                       />
+                       <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/40 via-transparent to-transparent" />
                     </div>
                   </div>
+
 
                   {/* Narrative Side */}
                   <div className="space-y-12">
@@ -309,7 +320,81 @@ const Projects = () => {
           </div>
         </div>
       )}
+      {/* Project Detail Modal */}
+      {selectedProject && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+          <div 
+            className="absolute inset-0 bg-brand-dark/90 backdrop-blur-xl"
+            onClick={() => setSelectedProject(null)}
+          />
+          
+          <div className="relative w-full max-w-4xl glass-card-strong rounded-3xl overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-300 max-h-[90vh] overflow-y-auto">
+            <div className={`h-2 bg-gradient-to-r ${selectedProject.color}`} />
+            
+            <button 
+              onClick={() => setSelectedProject(null)}
+              className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full glass-card flex items-center justify-center text-white/60 hover:text-white transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="grid md:grid-cols-2 gap-0">
+               {/* Visual Side */}
+               <div className="relative h-64 md:h-full">
+                  <img 
+                    src={selectedProject.image} 
+                    alt={selectedProject.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/60 via-transparent to-transparent md:bg-gradient-to-r" />
+               </div>
+
+               {/* Content Side */}
+               <div className="p-8 sm:p-12">
+                  <div className="mb-8">
+                    <div className="flex items-center gap-2 text-brand-rose text-sm font-medium mb-2">
+                      <Target className="w-4 h-4" />
+                      <span>Le Challenge</span>
+                    </div>
+                    <h3 className="text-3xl font-heading font-bold text-white mb-2">{selectedProject.title}</h3>
+                    <p className="text-white/60 italic mb-6 leading-relaxed">
+                      "{selectedProject.challenge}"
+                    </p>
+                  </div>
+
+                  <div className="space-y-8">
+                    <div>
+                      <div className="flex items-center gap-2 text-white/40 text-xs uppercase tracking-widest mb-4">
+                        <Lightbulb className="w-4 h-4 text-amber-500" />
+                        <span>La Stratégie</span>
+                      </div>
+                      <p className="text-white/70 text-sm leading-relaxed">
+                        {selectedProject.solution}
+                      </p>
+                    </div>
+
+                    <div>
+                      <div className="flex items-center gap-2 text-white/40 text-xs uppercase tracking-widest mb-4">
+                        <Trophy className="w-4 h-4 text-emerald-500" />
+                        <span>Impact & Résultats</span>
+                      </div>
+                      <div className="grid gap-3">
+                        {selectedProject.results.map((result, i) => (
+                          <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5">
+                            <div className="w-1.5 h-1.5 rounded-full bg-brand-rose" />
+                            <p className="text-white/80 text-xs">{result}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+               </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
+
   );
 };
 

@@ -16,7 +16,10 @@ import {
   Search,
   Mail,
   Globe,
-  Lightbulb
+  Lightbulb,
+  Zap,
+  Layout,
+  Columns
 } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -44,6 +47,32 @@ const skills: Skill[] = [
   { name: "Web Strategy", icon: <Globe className="w-5 h-5" />, level: 87, category: "Strategy" },
   { name: "Growth", icon: <TrendingUp className="w-5 h-5" />, level: 83, category: "Data" },
   { name: "Visual Design", icon: <Palette className="w-5 h-5" />, level: 76, category: "Design" },
+  // Digital
+  { name: "WordPress", icon: <Globe className="w-5 h-5" />, level: 85, category: "Digital" },
+  { name: "Brevo", icon: <Mail className="w-5 h-5" />, level: 82, category: "Digital" },
+  { name: "Yooz", icon: <FileText className="w-5 h-5" />, level: 75, category: "Digital" },
+  { name: "Smartlive", icon: <Video className="w-5 h-5" />, level: 70, category: "Digital" },
+  { name: "Google Analytics", icon: <BarChart3 className="w-5 h-5" />, level: 88, category: "Digital" },
+  { name: "Semrush", icon: <TrendingUp className="w-5 h-5" />, level: 85, category: "Digital" },
+  { name: "Page Speed Insight", icon: <Zap className="w-5 h-5" />, level: 80, category: "Digital" },
+  { name: "Meta Ads", icon: <Megaphone className="w-5 h-5" />, level: 84, category: "Digital" },
+  { name: "Figma", icon: <Figma className="w-5 h-5" />, level: 82, category: "Digital" },
+  { name: "GTmetrix", icon: <BarChart3 className="w-5 h-5" />, level: 78, category: "Digital" },
+  { name: "Asana", icon: <Layout className="w-5 h-5" />, level: 80, category: "Digital" },
+  { name: "Trello", icon: <Columns className="w-5 h-5" />, level: 85, category: "Digital" },
+  { name: "SEA", icon: <Search className="w-5 h-5" />, level: 82, category: "Digital" },
+  // Content
+  { name: "Rédaction", icon: <PenTool className="w-5 h-5" />, level: 90, category: "Content" },
+  // Data
+  { name: "Google Analytics", icon: <BarChart3 className="w-5 h-5" />, level: 88, category: "Data" },
+  { name: "Semrush", icon: <TrendingUp className="w-5 h-5" />, level: 85, category: "Data" },
+  { name: "Page Speed Insight", icon: <Zap className="w-5 h-5" />, level: 80, category: "Data" },
+  { name: "Meta Ads", icon: <Megaphone className="w-5 h-5" />, level: 84, category: "Data" },
+  { name: "GTmetrix", icon: <BarChart3 className="w-5 h-5" />, level: 78, category: "Data" },
+  // Design
+  { name: "Canva", icon: <Palette className="w-5 h-5" />, level: 95, category: "Design" },
+  { name: "Capcut", icon: <Video className="w-5 h-5" />, level: 88, category: "Design" },
+  { name: "Première Pro", icon: <Video className="w-5 h-5" />, level: 80, category: "Design" },
 ];
 
 const categories = ["Tout", "Digital", "Content", "Strategy", "Data", "Design"];
