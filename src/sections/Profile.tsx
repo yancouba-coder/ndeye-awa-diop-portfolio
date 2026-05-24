@@ -93,7 +93,7 @@ const Profile = () => {
                     <span>Actuellement</span>
                   </div>
                   <p className="text-white font-semibold text-sm">M comme Mutuelle</p>
-                  <p className="text-white/70 text-xs">Chargée de Communication Digitale</p>
+                  <p className="text-white/70 text-xs">Chargée de communication et marketing digital</p>
                 </div>
               </div>
             </div>
@@ -110,7 +110,7 @@ const Profile = () => {
                     Profil
                   </h2>
                   <p className="text-brand-rose font-medium text-lg">
-                    Chargée de Communication Digitale & Brand Content
+                    Chargée de communication et marketing digital
                   </p>
                 </div>
 
