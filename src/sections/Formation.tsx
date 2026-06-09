@@ -35,7 +35,7 @@ const education: EducationItem[] = [
   {
     id: "esp-bordeaux",
     school: "ESP Bordeaux",
-    degree: "Mastère 1 Marketing d'influence et communication",
+    degree: "Mastère 1 Marketing d’influence et événementiel",
     period: "2024 - 2025",
     location: "Bordeaux",
     color: "from-blue-500 to-cyan-600",
