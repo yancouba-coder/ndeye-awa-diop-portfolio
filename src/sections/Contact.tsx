@@ -51,21 +51,26 @@ const Contact = () => {
     return () => ctx.revert();
   }, []);
 
-  const encode = (data: any) => {
-    return Object.keys(data)
-      .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
-  };
+  const CONTACT_EMAIL = "nad82467@gmail.com";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/", {
+      const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "contact", ...formData }),
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          _subject: `[Portfolio] ${formData.subject} - ${formData.name}`,
+          message: formData.message,
+          _captcha: "false"
+        }),
       });
 
       if (response.ok) {
@@ -76,7 +81,7 @@ const Contact = () => {
         throw new Error('Erreur lors de l’envoi');
       }
     } catch (error) {
-      console.error('Netlify Form Error:', error);
+      console.error('Contact Form Error:', error);
       toast.error('Une erreur est survenue lors de l’envoi du message. Veuillez réessayer.');
     } finally {
       setIsSubmitting(false);
@@ -235,9 +240,7 @@ const Contact = () => {
                   onSubmit={handleSubmit} 
                   className="space-y-6"
                   name="contact"
-                  data-netlify="true"
                 >
-                  <input type="hidden" name="form-name" value="contact" />
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
