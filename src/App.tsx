@@ -23,7 +23,6 @@ const navItems = [
    { label: 'Formations', href: '#formation' },
   { label: 'Projets', href: '#projects' },
   { label: 'Avis', href: '#testimonials' },
-  { label: 'Contact', href: '#contact' },
 ];
 
 function App() {

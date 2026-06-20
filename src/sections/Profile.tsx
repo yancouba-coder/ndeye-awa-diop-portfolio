@@ -116,13 +116,9 @@ const Profile = () => {
 
                 {/* Bio */}
                 <p className="text-white/70 leading-relaxed text-xs sm:text-base text-justify">
-                  Je conçois des dispositifs de communication qui ne se limitent pas à un format.
-
-Ce qui m’intéresse, c’est de penser un projet dans son ensemble : comprendre les enjeux, structurer une stratégie, imaginer une expérience et la déployer de manière cohérente.
-
-<br/> Entre stratégie de marque, digital et événementiel, j’interviens sur toutes les dimensions d’un projet, de l’idée à sa mise en œuvre.
-
-J’aime créer des univers, coordonner des actions et donner du sens à chaque choix pour construire des dispositifs à la fois cohérents, utiles et impactants.
+                  J'aborde chaque projet dans sa globalité. Comprendre les enjeux, définir une stratégie, développer des opportunités, imaginer une expérience et coordonner sa mise en œuvre sont autant d'étapes que j'aime relier pour construire des projets cohérents et porteurs de sens.
+                  <br /><br />
+                  À la croisée de la communication, du marketing, du développement commercial, du digital et de l'événementiel, j'évolue avec une approche transversale qui allie vision stratégique et sens de l'opérationnel. Qu'il s'agisse de valoriser une marque, développer un portefeuille, organiser ou coordonner un événement, j'aime fédérer les idées, créer du lien et transformer les ambitions en réalisations concrètes.
                 </p>
 
                 {/* Location */}

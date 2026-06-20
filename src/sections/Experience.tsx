@@ -20,11 +20,11 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
   {
     id: "m-comme-mutuelle",
-    company: "M comme Mutuelle",
+    company: "M\u00A0Comme\u00A0Mutuelle",
     role: "Chargée de communication",
     period: "Sept 2025 - Sept 2026",
     description: "Alternance Stratégique",
-    highlights: ["Brand Content", "Communication digitale", "Événementiel", "Réseaux Sociaux", "Gestion de projet"],
+    highlights: ["Brand Content", "Stratégie digitale", "Événementiel", "Réseaux Sociaux", "Gestion de projet"],
     color: "from-rose-500 to-purple-600",
     story: "Au sein de M comme Mutuelle, j’ai participé au développement de la communication digitale et événementielle de l’entreprise à travers des projets transverses mêlant création de contenu, coordination, communication institutionnelle, rédaction et valorisation de l’image de marque. Cette expérience m’a permis de contribuer à des actions de communication à forte dimension humaine, en accompagnant la mise en avant des initiatives de la mutuelle tout en participant à la gestion de projets, à l’organisation d’événements et au suivi des performances des actions menées.",
     achievements: [
@@ -38,10 +38,10 @@ const experiences: ExperienceItem[] = [
   {
     id: "oparebrise33",
     company: "Oparebrise 33",
-    role: "Chargée de communication digitale",
+    role: "Responsable communication et marketing",
     period: "Jan 2025 - Août 2025",
     description: "Alternance Performance",
-    highlights: ["SEO/SEA", "Google Ads", "Acquisition", "Réseaux Sociaux", "Analytique", "Communication Digitale"],
+    highlights: ["Prospection", "SEO/SEA", "Google Ads", "Acquisition", "Réseaux Sociaux", "Analytique", "Communication Digitale"],
     color: "from-blue-500 to-cyan-600",
     story: "Participation au développement digital et à la stratégie de visibilité locale de l’entreprise à travers des actions mêlant communication, marketing digital et optimisation de la présence en ligne. J’ai contribué à la gestion globale de l’image numérique de la structure, avec une approche orientée acquisition, performance et expérience utilisateur.",
     achievements: [
@@ -56,7 +56,7 @@ const experiences: ExperienceItem[] = [
   {
     id: "zola-media",
     company: "Zola média",
-    role: "Chargée de communication et marketing",
+    role: "Cheffe de projet digital",
     period: "Sept 2024 - Déc 2025",
     description: "Alternance Événementielle",
     highlights: ["Brand Content", "Réseaux Sociaux", "SEO", "Événementiel", "Communication", "Influence"],
@@ -160,20 +160,20 @@ const Experience = () => {
                 <div className="glass-card-strong rounded-3xl p-6 sm:p-8 h-full hover-lift group border border-white/10 flex flex-col">
                   <div className={`h-2 w-full rounded-full bg-gradient-to-r ${exp.color} mb-6`} />
                   
-                  <div className="flex items-start justify-between gap-4 mb-4">
-                    <div>
-                      <div className="flex items-center gap-2 text-white/50 text-sm mb-1">
+                  <div className="mb-4">
+                    <div className="flex items-center justify-between gap-4 mb-2">
+                      <div className="flex items-center gap-2 text-white/50 text-sm">
                         <Building2 className="w-4 h-4" />
                         <span>Entreprise</span>
                       </div>
-                      <h3 className="text-xl sm:text-2xl font-heading font-bold text-white group-hover:text-brand-rose transition-colors">
-                        {exp.company}
-                      </h3>
+                      <div className="flex items-center gap-2 text-white/50 text-sm whitespace-nowrap">
+                        <Calendar className="w-4 h-4" />
+                        <span>{exp.period}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2 text-white/50 text-sm whitespace-nowrap">
-                      <Calendar className="w-4 h-4" />
-                      <span>{exp.period}</span>
-                    </div>
+                    <h3 className="text-xl sm:text-2xl font-heading font-bold text-white group-hover:text-brand-rose transition-colors whitespace-nowrap text-ellipsis overflow-hidden">
+                      {exp.company}
+                    </h3>
                   </div>
 
                   <p className="text-brand-rose font-medium mb-2">{exp.role}</p>
