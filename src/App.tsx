@@ -10,9 +10,11 @@ import Experience from './sections/Experience';
 import Skills from './sections/Skills';
 import Formation from './sections/Formation';
 import Projects from './sections/Projects';
+import LivreBlanc, { LivreBlancModal } from './sections/LivreBlanc';
 import Testimonials from './sections/Testimonials';
 import Contact from './sections/Contact';
 import ScrollInvite from './components/ScrollInvite';
+import LivreBlancBanner from './components/LivreBlancBanner';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,8 +22,9 @@ const navItems = [
   { label: 'Profil', href: '#profile' },
   { label: 'Expérience', href: '#experience' },
   { label: 'Compétences', href: '#skills' },
-   { label: 'Formations', href: '#formation' },
+  { label: 'Formations', href: '#formation' },
   { label: 'Projets', href: '#projects' },
+  { label: 'Livre Blanc', href: '#livreblanc' },
   { label: 'Avis', href: '#testimonials' },
 ];
 
@@ -29,6 +32,7 @@ function App() {
   const [isNavVisible, setIsNavVisible] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('profile');
+  const [isLivreBlancOpen, setIsLivreBlancOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const mainRef = useRef<HTMLElement>(null);
 
@@ -46,7 +50,7 @@ function App() {
 
   useEffect(() => {
     // Track active section
-    const sections = ['profile', 'experience', 'skills', 'formation', 'projects', 'testimonials', 'contact'];
+    const sections = ['profile', 'experience', 'skills', 'formation', 'projects', 'livreblanc', 'testimonials', 'contact'];
     
     sections.forEach((sectionId) => {
       const element = document.getElementById(sectionId);
@@ -200,7 +204,7 @@ function App() {
       <main ref={mainRef} className="relative">
         <Hero />
         <div id="profile">
-          <Profile />
+          <Profile onOpenLivreBlanc={() => setIsLivreBlancOpen(true)} />
         </div>
         <div id="experience">
           <Experience />
@@ -214,6 +218,9 @@ function App() {
         <div id="projects">
           <Projects />
         </div>
+        <div id="livreblanc">
+          <LivreBlanc onOpenModal={() => setIsLivreBlancOpen(true)} />
+        </div>
         <div id="testimonials">
           <Testimonials />
         </div>
@@ -225,6 +232,13 @@ function App() {
       {/* Custom items */}
       <ScrollInvite />
       <CustomCursor />
+
+      {/* Livre Blanc */}
+      <LivreBlancBanner onOpenModal={() => setIsLivreBlancOpen(true)} />
+      <LivreBlancModal
+        isOpen={isLivreBlancOpen}
+        onClose={() => setIsLivreBlancOpen(false)}
+      />
     </div>
   );
 }

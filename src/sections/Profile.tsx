@@ -1,12 +1,16 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Linkedin, Instagram, Mail, Download, MapPin, Briefcase } from 'lucide-react';
+import { Linkedin, Instagram, Mail, Download, MapPin, Briefcase, BookOpen } from 'lucide-react';
 import profileImage from '../assets/images/profile-photo.jpeg';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Profile = () => {
+interface ProfileProps {
+  onOpenLivreBlanc: () => void;
+}
+
+const Profile = ({ onOpenLivreBlanc }: ProfileProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
@@ -169,16 +173,27 @@ const Profile = () => {
                   </a>
                 </div>
 
-                {/* CTA */}
-                <a 
-                  href="/Cv Awa Diop.pdf" 
-                  download="Cv Awa Diop.pdf"
-                  className="btn-primary w-full sm:w-auto flex items-center justify-center gap-2 no-underline"
-                >
-                  <Download className="w-4 h-4" />
-                  Télécharger mon CV
-                </a>
+                {/* CTAs */}
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a 
+                    href="/Cv Awa Diop.pdf" 
+                    download="Cv Awa Diop.pdf"
+                    className="btn-primary flex items-center justify-center gap-2 no-underline"
+                  >
+                    <Download className="w-4 h-4" />
+                    Télécharger mon CV
+                  </a>
+                  <button
+                    id="profile-livre-blanc-cta"
+                    onClick={onOpenLivreBlanc}
+                    className="btn-outline flex items-center justify-center gap-2"
+                  >
+                    <BookOpen className="w-4 h-4" />
+                    Livre blanc gratuit
+                  </button>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
