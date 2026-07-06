@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Linkedin, Instagram, Mail, Download, MapPin, Briefcase, BookOpen } from 'lucide-react';
@@ -15,6 +15,7 @@ const Profile = ({ onOpenLivreBlanc }: ProfileProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -72,7 +73,7 @@ const Profile = ({ onOpenLivreBlanc }: ProfileProps) => {
         ref={cardRef}
         className="relative w-full max-w-5xl mx-auto will-change-transform"
       >
-        <div className="glass-card-strong rounded-3xl overflow-hidden shadow-card">
+        <div className="glass-card-strong rounded-3xl overflow-y-auto shadow-card max-h-[calc(100dvh-5rem)] custom-scrollbar">
           <div className="grid md:grid-cols-2 gap-0">
             {/* Image side */}
             <div className="relative h-80 md:h-96 lg:h-auto overflow-hidden">
@@ -119,11 +120,22 @@ const Profile = ({ onOpenLivreBlanc }: ProfileProps) => {
                 </div>
 
                 {/* Bio */}
-                <p className="text-white/70 leading-relaxed text-xs sm:text-base text-justify">
-                  J'aborde chaque projet dans sa globalité. Comprendre les enjeux, définir une stratégie, développer des opportunités, imaginer une expérience et coordonner sa mise en œuvre sont autant d'étapes que j'aime relier pour construire des projets cohérents et porteurs de sens.
-                  <br /><br />
-                  À la croisée de la communication, du marketing, du développement commercial, du digital et de l'événementiel, j'évolue avec une approche transversale qui allie vision stratégique et sens de l'opérationnel. Qu'il s'agisse de valoriser une marque, développer un portefeuille, organiser ou coordonner un événement, j'aime fédérer les idées, créer du lien et transformer les ambitions en réalisations concrètes.
-                </p>
+                <div className="text-white/70 leading-relaxed text-xs sm:text-base text-justify">
+                  <p>
+                    J'aborde chaque projet dans sa globalité. Comprendre les enjeux, définir une stratégie, développer des opportunités, imaginer une expérience et coordonner sa mise en œuvre sont autant d'étapes que j'aime relier pour construire des projets cohérents et porteurs de sens.
+                  </p>
+                  {isExpanded && (
+                    <p className="mt-4">
+                      À la croisée de la communication, du marketing, du développement commercial, du digital et de l'événementiel, j'évolue avec une approche transversale qui allie vision stratégique et sens de l'opérationnel. Qu'il s'agisse de valoriser une marque, développer un portefeuille, organiser ou coordonner un événement, j'aime fédérer les idées, créer du lien et transformer les ambitions en réalisations concrètes.
+                    </p>
+                  )}
+                  <button 
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    className="text-brand-rose mt-2 font-medium text-sm hover:underline focus:outline-none transition-colors"
+                  >
+                    {isExpanded ? "Voir moins" : "Voir plus..."}
+                  </button>
+                </div>
 
                 {/* Location */}
                 <div className="flex items-center gap-2 text-white/50">
@@ -174,23 +186,26 @@ const Profile = ({ onOpenLivreBlanc }: ProfileProps) => {
                 </div>
 
                 {/* CTAs */}
-                <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex flex-col sm:flex-row items-stretch gap-3">
                   <a 
                     href="/Cv Awa Diop.pdf" 
                     download="Cv Awa Diop.pdf"
-                    className="btn-primary flex items-center justify-center gap-2 no-underline"
+                    className="btn-primary flex-1 flex items-center justify-center gap-2 no-underline text-center"
                   >
-                    <Download className="w-4 h-4" />
-                    Télécharger mon CV
+                    <Download className="w-4 h-4 shrink-0" />
+                    <span>Télécharger mon CV</span>
                   </a>
-                  <button
-                    id="profile-livre-blanc-cta"
-                    onClick={onOpenLivreBlanc}
-                    className="btn-outline flex items-center justify-center gap-2"
+                  <a
+                    href="#livreblanc"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.querySelector('#livreblanc')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="btn-outline flex-1 flex items-center justify-center gap-2 no-underline text-center"
                   >
-                    <BookOpen className="w-4 h-4" />
-                    Livre blanc gratuit
-                  </button>
+                    <BookOpen className="w-4 h-4 shrink-0" />
+                    <span>Livre blanc gratuit</span>
+                  </a>
                 </div>
               </div>
 

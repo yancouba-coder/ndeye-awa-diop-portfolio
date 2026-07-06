@@ -13,7 +13,9 @@ import {
   User,
   ChevronRight,
 } from 'lucide-react';
-import livreBlanCover from '../assets/images/livre-blanc-cover.png';
+import livreBlanCover from '../assets/images/livre-blanc-photo.jpeg';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../lib/firebase';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,10 +27,10 @@ interface LivreBlancModalProps {
 
 // ─── Points clés du livre blanc ──────────────────────────────────────────────
 const highlights = [
-  'Construire une stratégie de communication digitale cohérente',
-  'Valoriser sa marque employeur et son identité en ligne',
-  'Piloter une communication 360° avec des outils accessibles',
-  'Mesurer l\'impact de ses actions et optimiser ses résultats',
+  'Comprendre comment le contenu influence les décisions d’achat en B2B',
+  'Construire une stratégie de contenu qui attire les bons prospects',
+  'Créer et diffuser des contenus réellement utiles et performants',
+  'Transformer son contenu en opportunités commerciales',
 ];
 
 // ─── Modal Formulaire ─────────────────────────────────────────────────────────
@@ -82,85 +84,20 @@ export const LivreBlancModal = ({ isOpen, onClose }: LivreBlancModalProps) => {
     setStatus('submitting');
     setErrorMsg('');
 
-    const apiKey = import.meta.env.VITE_BREVO_API_KEY;
-    const listId = parseInt(import.meta.env.VITE_BREVO_LIST_ID || '2');
-    const templateId = parseInt(import.meta.env.VITE_BREVO_TEMPLATE_ID || '1');
-
-    // ── Si pas de clé Brevo configurée → mode démonstration ──────────────────
-    if (!apiKey || apiKey === 'your_brevo_api_key_here') {
-      // Simule un délai réseau pour UX réaliste
-      await new Promise((r) => setTimeout(r, 1200));
-      console.warn(
-        '[Livre Blanc] Clé Brevo non configurée. En production, configurez VITE_BREVO_API_KEY dans votre fichier .env'
-      );
-      setStatus('success');
-      return;
-    }
-
     try {
-      // 1. Créer ou mettre à jour le contact dans Brevo
-      const contactRes = await fetch('https://api.brevo.com/v3/contacts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'api-key': apiKey,
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
+      if (db) {
+        await addDoc(collection(db, 'downloads'), {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
           email: formData.email,
-          attributes: {
-            PRENOM: formData.firstName,
-            NOM: formData.lastName,
-          },
-          listIds: [listId],
-          updateEnabled: true, // Met à jour si le contact existe déjà
-        }),
-      });
-
-      // 409 = contact existe déjà → on l'ajoute quand même à la liste
-      if (!contactRes.ok && contactRes.status !== 409) {
-        const errBody = await contactRes.json().catch(() => ({}));
-        throw new Error(errBody?.message || `Erreur Brevo contacts: ${contactRes.status}`);
-      }
-
-      // Si le contact existe déjà, on le met à jour manuellement
-      if (contactRes.status === 409) {
-        await fetch(`https://api.brevo.com/v3/contacts/${encodeURIComponent(formData.email)}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'api-key': apiKey,
-          },
-          body: JSON.stringify({
-            attributes: { PRENOM: formData.firstName, NOM: formData.lastName },
-            listIds: [listId],
-          }),
+          createdAt: serverTimestamp(),
         });
+      } else {
+        // Mode simulation si Firebase n'est pas encore configuré
+        await new Promise((r) => setTimeout(r, 1200));
+        console.warn('[Livre Blanc] Firebase non configuré. Enregistrement simulé.');
       }
-
-      // 2. Envoyer l'email transactionnel avec le lien de téléchargement
-      const emailRes = await fetch('https://api.brevo.com/v3/smtp/email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'api-key': apiKey,
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          templateId,
-          to: [{ email: formData.email, name: `${formData.firstName} ${formData.lastName}` }],
-          params: {
-            PRENOM: formData.firstName,
-            NOM: formData.lastName,
-          },
-        }),
-      });
-
-      if (!emailRes.ok) {
-        const errBody = await emailRes.json().catch(() => ({}));
-        throw new Error(errBody?.message || `Erreur envoi email: ${emailRes.status}`);
-      }
-
+      
       setStatus('success');
     } catch (error) {
       console.error('[Livre Blanc] Erreur:', error);
@@ -211,23 +148,27 @@ export const LivreBlancModal = ({ isOpen, onClose }: LivreBlancModalProps) => {
                 <CheckCircle className="w-10 h-10 text-brand-rose" />
               </div>
               <h3 className="text-2xl font-heading font-bold text-white mb-3">
-                C'est dans votre boîte mail !
-              </h3>
-              <p className="text-white/60 mb-2">
                 Merci <span className="text-white font-medium">{formData.firstName}</span> !
+              </h3>
+              <p className="text-white/50 text-sm leading-relaxed mb-8">
+                Votre demande a bien été enregistrée. Vous pouvez maintenant télécharger le livre blanc.
               </p>
-              <p className="text-white/50 text-sm leading-relaxed">
-                Un email avec le lien de téléchargement vient de vous être envoyé à{' '}
-                <span className="text-brand-rose">{formData.email}</span>.
-                <br />
-                Vérifiez également vos spams si vous ne le voyez pas.
-              </p>
-              <button
-                onClick={onClose}
-                className="mt-8 btn-outline text-sm py-3 px-6"
-              >
-                Fermer
-              </button>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <a
+                  href="/LIVRE BLANC - Ndeye Awa DIOP.pdf"
+                  download="LIVRE BLANC - Ndeye Awa DIOP.pdf"
+                  className="btn-primary py-3 px-6 text-sm flex justify-center items-center gap-2 no-underline"
+                >
+                  <Download className="w-4 h-4" />
+                  Télécharger le PDF
+                </a>
+                <button
+                  onClick={onClose}
+                  className="btn-outline py-3 px-6 text-sm flex justify-center items-center"
+                >
+                  Fermer
+                </button>
+              </div>
             </div>
           ) : (
             /* ── Formulaire ───────────────────────────────────────────────── */
@@ -446,9 +387,7 @@ const LivreBlanc = ({ onOpenModal }: LivreBlancProps) => {
             </h2>
 
             <p className="text-white/60 text-lg leading-relaxed mb-8">
-              Un guide stratégique complet sur la communication digitale — mes
-              méthodes, frameworks et conseils opérationnels issus de plusieurs
-              années de terrain.
+              Un guide pratique pour transformer votre contenu en véritable levier d’acquisition client avec une méthode claire, des exemples concrets et des conseils directement applicables.
             </p>
 
             {/* Points clés */}
@@ -475,11 +414,6 @@ const LivreBlanc = ({ onOpenModal }: LivreBlancProps) => {
                 Recevoir le livre blanc
                 <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
               </button>
-
-              <div className="flex items-center gap-2 text-white/40 text-sm">
-                <Sparkles className="w-4 h-4 text-brand-rose/60" />
-                <span>Gratuit · Envoi immédiat par email</span>
-              </div>
             </div>
           </div>
 
@@ -498,7 +432,7 @@ const LivreBlanc = ({ onOpenModal }: LivreBlancProps) => {
                   <img
                     src={livreBlanCover}
                     alt="Livre Blanc — Communication Digitale par Awa Diop"
-                    className="w-full max-w-sm rounded-2xl object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    className="w-full max-w-md rounded-2xl object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                     loading="lazy"
                   />
                 </div>
