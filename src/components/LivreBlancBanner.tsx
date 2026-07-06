@@ -79,7 +79,7 @@ const LivreBlancBanner = ({ onOpenModal }: LivreBlancBannerProps) => {
           </div>
 
           <p className="text-white/60 text-xs leading-relaxed mb-3">
-            Mon guide stratégique complet — reçu directement dans votre boîte mail.
+            Les 5 étapes pour transformer votre contenu en véritable levier d’acquisition client.
           </p>
 
           <button
@@ -87,7 +87,7 @@ const LivreBlancBanner = ({ onOpenModal }: LivreBlancBannerProps) => {
             onClick={handleOpen}
             className="w-full flex items-center justify-center gap-1.5 px-4 py-2.5 bg-gradient-to-r from-brand-rose to-brand-purple rounded-xl text-white text-xs font-semibold hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-glow"
           >
-            Recevoir gratuitement
+            Télécharger gratuitement
             <ArrowRight className="w-3 h-3" />
           </button>
         </div>
