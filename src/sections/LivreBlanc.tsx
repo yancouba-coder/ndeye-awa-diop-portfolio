@@ -179,10 +179,10 @@ export const LivreBlancModal = ({ isOpen, onClose }: LivreBlancModalProps) => {
                 </div>
                 <div>
                   <h3 className="text-xl font-heading font-bold text-white">
-                    Recevoir le livre blanc
+                    Télécharger le livre blanc
                   </h3>
                   <p className="text-white/50 text-xs mt-0.5">
-                    Envoi immédiat par email · 100% gratuit
+                    Téléchargement immédiat · 100% gratuit
                   </p>
                 </div>
               </div>
@@ -284,7 +284,7 @@ export const LivreBlancModal = ({ isOpen, onClose }: LivreBlancModalProps) => {
                   ) : (
                     <>
                       <Download className="w-4 h-4" />
-                      Recevoir le livre blanc
+                      Télécharger le livre blanc
                     </>
                   )}
                 </button>
