@@ -10,6 +10,7 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/livre-blanc" element={<App defaultLivreBlancOpen={true} />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>

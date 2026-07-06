@@ -28,11 +28,15 @@ const navItems = [
   { label: 'Avis', href: '#testimonials' },
 ];
 
-function App() {
+interface AppProps {
+  defaultLivreBlancOpen?: boolean;
+}
+
+function App({ defaultLivreBlancOpen = false }: AppProps) {
   const [isNavVisible, setIsNavVisible] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('profile');
-  const [isLivreBlancOpen, setIsLivreBlancOpen] = useState(false);
+  const [isLivreBlancOpen, setIsLivreBlancOpen] = useState(defaultLivreBlancOpen);
   const navRef = useRef<HTMLElement>(null);
   const mainRef = useRef<HTMLElement>(null);
 
