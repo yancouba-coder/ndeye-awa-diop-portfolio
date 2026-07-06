@@ -29,16 +29,28 @@ const navItems = [
 ];
 
 interface AppProps {
-  defaultLivreBlancOpen?: boolean;
+  scrollToLivreBlanc?: boolean;
 }
 
-function App({ defaultLivreBlancOpen = false }: AppProps) {
+function App({ scrollToLivreBlanc = false }: AppProps) {
   const [isNavVisible, setIsNavVisible] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('profile');
-  const [isLivreBlancOpen, setIsLivreBlancOpen] = useState(defaultLivreBlancOpen);
+  const [isLivreBlancOpen, setIsLivreBlancOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const mainRef = useRef<HTMLElement>(null);
+
+  // Auto-scroll on mount if requested
+  useEffect(() => {
+    if (scrollToLivreBlanc) {
+      setTimeout(() => {
+        const element = document.getElementById('livreblanc');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 500); // Small delay to ensure the page has rendered
+    }
+  }, [scrollToLivreBlanc]);
 
   useEffect(() => {
     // Show nav after scrolling past hero
