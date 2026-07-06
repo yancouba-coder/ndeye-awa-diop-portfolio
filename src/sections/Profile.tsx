@@ -6,11 +6,7 @@ import profileImage from '../assets/images/profile-photo.jpeg';
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface ProfileProps {
-  onOpenLivreBlanc: () => void;
-}
-
-const Profile = ({ onOpenLivreBlanc }: ProfileProps) => {
+const Profile = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);

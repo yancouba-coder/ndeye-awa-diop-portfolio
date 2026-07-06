@@ -204,7 +204,7 @@ function App() {
       <main ref={mainRef} className="relative">
         <Hero />
         <div id="profile">
-          <Profile onOpenLivreBlanc={() => setIsLivreBlancOpen(true)} />
+          <Profile />
         </div>
         <div id="experience">
           <Experience />

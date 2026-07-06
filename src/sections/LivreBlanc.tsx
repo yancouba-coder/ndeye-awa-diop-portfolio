@@ -7,7 +7,6 @@ import {
   X,
   CheckCircle,
   ArrowRight,
-  Sparkles,
   Lock,
   Mail,
   User,
@@ -86,7 +85,7 @@ export const LivreBlancModal = ({ isOpen, onClose }: LivreBlancModalProps) => {
 
     try {
       if (db) {
-        await addDoc(collection(db, 'downloads'), {
+        await addDoc(collection(db!, 'downloads'), {
           firstName: formData.firstName,
           lastName: formData.lastName,
           email: formData.email,

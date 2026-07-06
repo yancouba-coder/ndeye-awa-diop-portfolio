@@ -36,7 +36,7 @@ export default function Admin() {
       const fetchLeads = async () => {
         setIsLoading(true);
         try {
-          const q = query(collection(db, 'downloads'), orderBy('createdAt', 'desc'));
+          const q = query(collection(db!, 'downloads'), orderBy('createdAt', 'desc'));
           const snapshot = await getDocs(q);
           const data: Lead[] = [];
           snapshot.forEach((doc) => {

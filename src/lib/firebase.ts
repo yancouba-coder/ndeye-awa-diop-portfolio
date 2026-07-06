@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app';
+import type { FirebaseApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
+import type { Firestore } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -12,8 +14,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase only if the API key is actually provided (not dummy)
-let app = null;
-let db = null;
+let app: FirebaseApp | null = null;
+let db: Firestore | null = null;
 
 try {
   if (firebaseConfig.apiKey && firebaseConfig.apiKey !== "dummy") {
