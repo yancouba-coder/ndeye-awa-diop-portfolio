@@ -86,10 +86,6 @@ const TestimonialCard = ({ item }: { item: Testimonial }) => {
   return (
     <div className="testimonial-card group relative h-full">
       <div className="glass-card-strong rounded-3xl p-8 h-full flex flex-col hover-lift border border-white/5 transition-all duration-500">
-        <div className={`absolute -top-1 px-4 py-1.5 rounded-b-xl bg-gradient-to-r ${item.color} text-[10px] font-bold text-white uppercase tracking-tighter opacity-70 group-hover:opacity-100 transition-opacity`}>
-           {item.source}
-        </div>
-        
         <div className="flex items-center gap-4 mb-8 pt-4">
           <div className={`w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center p-0.5`}>
              <div className="w-full h-full rounded-2xl bg-brand-dark flex items-center justify-center">

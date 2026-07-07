@@ -72,7 +72,7 @@ const LivreBlancBanner = ({ onOpenModal }: LivreBlancBannerProps) => {
             </div>
             <div>
               <p className="text-white font-semibold text-sm leading-tight">
-                Livre Blanc offert
+                Livre Blanc gratuit
               </p>
               <p className="text-white/40 text-xs">Communication Digitale</p>
             </div>
