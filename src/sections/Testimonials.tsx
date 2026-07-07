@@ -71,6 +71,14 @@ const testimonials: Testimonial[] = [
     content: "J'ai eu la chance d'accompagner Awa durant sa dernière année d'études supérieures, au sein de M comme Mutuelle, en tant que tutrice. Ce fut un réel plaisir de la voir évoluer professionnellement au fil des mois.\nAu-delà d'être un vrai rayon de soleil au quotidien, Awa a su être un vrai binôme dans les projets de communication : très à l'écoute, qui sait intégrer les retours avec beaucoup de professionnalisme. Toujours réactive, impliquée et volontaire, c'est une personne sur qui on peut compter, les yeux fermés.\n\nJe lui souhaite bien évidemment tout le meilleur pour la suite de son aventure pro.\nEt si vous me lisez, que vous recherchez une collaboratrice en marketing/communication, n'hésitez pas à échanger avec elle pour en savoir plus. Je suis convaincue qu'elle saura apporter un vrai plus dans votre équipe !",
     source: "LinkedIn",
     color: "from-indigo-500 to-blue-500"
+  },
+  {
+    id: 8,
+    name: "Mahmoud EL HAMRI",
+    role: "Directeur de Oparebrise33",
+    content: "J’ai eu le plaisir d’accueillir Awa en alternance au sein de mon entreprise, Oparebrise 33. Tout au long de son parcours, elle a fait preuve de sérieux, de motivation et d’un excellent sens des responsabilités.\n\nElle s’est rapidement intégrée à l’équipe, a su apprendre efficacement et mener à bien les missions qui lui étaient confiées avec professionnalisme, notamment dans les domaines de la communication, du marketing et du développement commercial. Son implication, sa ponctualité et sa capacité d’adaptation ont été particulièrement appréciées.\n\nAwa est une personne agréable, investie et toujours désireuse de progresser. Je la recommande vivement.",
+    source: "LinkedIn",
+    color: "from-sky-500 to-indigo-500"
   }
 ];
 
