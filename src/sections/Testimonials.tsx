@@ -191,29 +191,28 @@ const Testimonials = () => {
                 "Tout au long de mon parcours professionnel, j'ai eu la chance de collaborer avec des employeurs et collègues qui ont reconnu mon savoir-faire."
               </p>
             </div>
-            
-            {/* Navigation buttons */}
-            <div className="flex items-center gap-3">
-              <button 
-                onClick={() => scroll('left')}
-                className="w-12 h-12 flex items-center justify-center rounded-full glass-card hover:bg-white/10 text-white transition-colors"
-                aria-label="Avis précédent"
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-              <button 
-                onClick={() => scroll('right')}
-                className="w-12 h-12 flex items-center justify-center rounded-full glass-card hover:bg-white/10 text-white transition-colors"
-                aria-label="Avis suivant"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-            </div>
           </div>
         </div>
 
         {/* Carousel Container */}
-        <div className="relative -mx-4 sm:-mx-8 px-4 sm:px-8">
+        <div className="relative -mx-4 sm:-mx-8 px-4 sm:px-8 group">
+          {/* Floating Navigation Buttons */}
+          <button 
+            onClick={() => scroll('left')}
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-brand-dark/90 border border-white/20 shadow-glow hover:bg-white/10 text-white backdrop-blur-md transition-all"
+            aria-label="Avis précédent"
+          >
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
+
+          <button 
+            onClick={() => scroll('right')}
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-brand-dark/90 border border-white/20 shadow-glow hover:bg-white/10 text-white backdrop-blur-md transition-all"
+            aria-label="Avis suivant"
+          >
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
+
           <div 
             ref={scrollContainerRef} 
             className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8"
