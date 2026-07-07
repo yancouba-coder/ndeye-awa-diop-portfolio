@@ -50,6 +50,14 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 5,
+    name: "Mahmoud EL HAMRI",
+    role: "Directeur de Oparebrise33",
+    content: "J’ai eu le plaisir d’accueillir Awa en alternance au sein de mon entreprise, Oparebrise 33. Tout au long de son parcours, elle a fait preuve de sérieux, de motivation et d’un excellent sens des responsabilités.\n\nElle s’est rapidement intégrée à l’équipe, a su apprendre efficacement et mener à bien les missions qui lui étaient confiées avec professionnalisme, notamment dans les domaines de la communication, du marketing et du développement commercial. Son implication, sa ponctualité et sa capacité d’adaptation ont été particulièrement appréciées.\n\nAwa est une personne agréable, investie et toujours désireuse de progresser. Je la recommande vivement.",
+    source: "LinkedIn",
+    color: "from-sky-500 to-indigo-500"
+  },
+  {
+    id: 6,
     name: "Anissa ELFITATI",
     role: "Chargée de prévention",
     content: "Awa est une personne toujours partante, enthousiaste et pleinement investie dans son travail. Son attitude positive, sa bonne humeur et son énergie sont de véritables atouts pour l'équipe. C'est une collègue précieuse que chacun apprécie de côtoyer. Ce fut un véritable plaisir de travailler avec elle.",
@@ -57,7 +65,7 @@ const testimonials: Testimonial[] = [
     color: "from-orange-500 to-amber-500"
   },
   {
-    id: 6,
+    id: 7,
     name: "Amélie PERON",
     role: "Chargée de communication",
     content: "J'ai eu la chance de travailler avec Awa cette année et je n'ai qu'une seule chose à dire : c'est la perle rare.\nElle est toujours pleine d'idées, créative, investie et force de proposition. On sent qu'elle aime ce qu'elle fait et ça se ressent.\nAwa est un vrai rayon de soleil : bonne humeur, énergie et beaucoup d'humour sont à prévoir.\nJe suis persuadée qu'elle ira très loin et qu'elle sera un véritable atout pour sa prochaine équipe, comme elle l'a été pour la nôtre.",
@@ -65,20 +73,12 @@ const testimonials: Testimonial[] = [
     color: "from-violet-500 to-fuchsia-500"
   },
   {
-    id: 7,
+    id: 8,
     name: "Justine LEPORCQ",
     role: "Responsable communication",
     content: "J'ai eu la chance d'accompagner Awa durant sa dernière année d'études supérieures, au sein de M comme Mutuelle, en tant que tutrice. Ce fut un réel plaisir de la voir évoluer professionnellement au fil des mois.\nAu-delà d'être un vrai rayon de soleil au quotidien, Awa a su être un vrai binôme dans les projets de communication : très à l'écoute, qui sait intégrer les retours avec beaucoup de professionnalisme. Toujours réactive, impliquée et volontaire, c'est une personne sur qui on peut compter, les yeux fermés.\n\nJe lui souhaite bien évidemment tout le meilleur pour la suite de son aventure pro.\nEt si vous me lisez, que vous recherchez une collaboratrice en marketing/communication, n'hésitez pas à échanger avec elle pour en savoir plus. Je suis convaincue qu'elle saura apporter un vrai plus dans votre équipe !",
     source: "LinkedIn",
     color: "from-indigo-500 to-blue-500"
-  },
-  {
-    id: 8,
-    name: "Mahmoud EL HAMRI",
-    role: "Directeur de Oparebrise33",
-    content: "J’ai eu le plaisir d’accueillir Awa en alternance au sein de mon entreprise, Oparebrise 33. Tout au long de son parcours, elle a fait preuve de sérieux, de motivation et d’un excellent sens des responsabilités.\n\nElle s’est rapidement intégrée à l’équipe, a su apprendre efficacement et mener à bien les missions qui lui étaient confiées avec professionnalisme, notamment dans les domaines de la communication, du marketing et du développement commercial. Son implication, sa ponctualité et sa capacité d’adaptation ont été particulièrement appréciées.\n\nAwa est une personne agréable, investie et toujours désireuse de progresser. Je la recommande vivement.",
-    source: "LinkedIn",
-    color: "from-sky-500 to-indigo-500"
   }
 ];
 
