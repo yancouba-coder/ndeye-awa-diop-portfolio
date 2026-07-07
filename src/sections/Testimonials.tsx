@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Quote, Star, MessageSquare } from 'lucide-react';
+import { Quote, Star, MessageSquare, ChevronLeft, ChevronRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,9 +26,9 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 2,
-    name: "OPAREBRISE BORDEAUX",
-    role: "Vitrage Automobile",
-    content: "Félicitations Ndeye Awa Diop ! Nous sommes ravis de te compter parmi nous depuis ces trois mois et de voir à quel point tu as contribué à la mise en place de stratégies digitales innovantes pour Oparebrise Bordeaux. Ta créativité, ton engagement et ton professionnalisme sont un véritable atout pour l'équipe !",
+    name: "Stéphanie DELAROCHE",
+    role: "Responsable clientèle chez Oparebrise 33",
+    content: "Awa ne laisse que de bons souvenirs partout où elle passe, autant humainement que professionnellement.\nAutonome, compétente et efficace, elle trouve ses marques rapidement.\nSon plus : elle amène de la joie, elle rayonne et apporte une très bonne dynamique.\nN’hésitez pas à lui accorder votre confiance, vous ne serez pas déçus !",
     source: "LinkedIn",
     color: "from-blue-500 to-cyan-500"
   },
@@ -47,6 +47,30 @@ const testimonials: Testimonial[] = [
     content: "Awa, est une femme très solaire, pleine de pep's et surtout très professionnelle. Elle est arrivée à un moment où l'entreprise avait besoin de revenir à la source et où il fallait communiquer en étant en accord avec notre cible et nos valeurs. En très peu de temps, elle a très vite compris l'ADN de l'entreprise et les enjeux. Tout ce qu'elle proposé et mis en application par la suite ont été couronné de succès. Une vraie pépite !",
     source: "LinkedIn",
     color: "from-emerald-500 to-teal-500"
+  },
+  {
+    id: 5,
+    name: "Anissa ELFITATI",
+    role: "Chargée de prévention",
+    content: "Awa est une personne toujours partante, enthousiaste et pleinement investie dans son travail. Son attitude positive, sa bonne humeur et son énergie sont de véritables atouts pour l'équipe. C'est une collègue précieuse que chacun apprécie de côtoyer. Ce fut un véritable plaisir de travailler avec elle.",
+    source: "LinkedIn",
+    color: "from-orange-500 to-amber-500"
+  },
+  {
+    id: 6,
+    name: "Amélie PERON",
+    role: "Chargée de communication",
+    content: "J'ai eu la chance de travailler avec Awa cette année et je n'ai qu'une seule chose à dire : c'est la perle rare.\nElle est toujours pleine d'idées, créative, investie et force de proposition. On sent qu'elle aime ce qu'elle fait et ça se ressent.\nAwa est un vrai rayon de soleil : bonne humeur, énergie et beaucoup d'humour sont à prévoir.\nJe suis persuadée qu'elle ira très loin et qu'elle sera un véritable atout pour sa prochaine équipe, comme elle l'a été pour la nôtre.",
+    source: "LinkedIn",
+    color: "from-violet-500 to-fuchsia-500"
+  },
+  {
+    id: 7,
+    name: "Justine LEPORCQ",
+    role: "Responsable communication",
+    content: "J'ai eu la chance d'accompagner Awa durant sa dernière année d'études supérieures, au sein de M comme Mutuelle, en tant que tutrice. Ce fut un réel plaisir de la voir évoluer professionnellement au fil des mois.\nAu-delà d'être un vrai rayon de soleil au quotidien, Awa a su être un vrai binôme dans les projets de communication : très à l'écoute, qui sait intégrer les retours avec beaucoup de professionnalisme. Toujours réactive, impliquée et volontaire, c'est une personne sur qui on peut compter, les yeux fermés.\n\nJe lui souhaite bien évidemment tout le meilleur pour la suite de son aventure pro.\nEt si vous me lisez, que vous recherchez une collaboratrice en marketing/communication, n'hésitez pas à échanger avec elle pour en savoir plus. Je suis convaincue qu'elle saura apporter un vrai plus dans votre équipe !",
+    source: "LinkedIn",
+    color: "from-indigo-500 to-blue-500"
   }
 ];
 
@@ -60,14 +84,14 @@ const TestimonialCard = ({ item }: { item: Testimonial }) => {
     : (shouldTruncate ? `${item.content.substring(0, maxLength)}...` : item.content);
 
   return (
-    <div className="testimonial-card group relative">
+    <div className="testimonial-card group relative h-full">
       <div className="glass-card-strong rounded-3xl p-8 h-full flex flex-col hover-lift border border-white/5 transition-all duration-500">
         <div className={`absolute -top-1 px-4 py-1.5 rounded-b-xl bg-gradient-to-r ${item.color} text-[10px] font-bold text-white uppercase tracking-tighter opacity-70 group-hover:opacity-100 transition-opacity`}>
            {item.source}
         </div>
         
         <div className="flex items-center gap-4 mb-8 pt-4">
-          <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center p-0.5`}>
+          <div className={`w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center p-0.5`}>
              <div className="w-full h-full rounded-2xl bg-brand-dark flex items-center justify-center">
                 <MessageSquare className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
              </div>
@@ -93,7 +117,7 @@ const TestimonialCard = ({ item }: { item: Testimonial }) => {
           )}
         </div>
 
-        <div className="mt-auto flex items-center gap-1">
+        <div className="mt-auto pt-4 flex items-center gap-1">
            {[...Array(5)].map((_, i) => (
              <Star key={i} className="w-3 h-3 text-amber-500 fill-amber-500" />
            ))}
@@ -106,7 +130,7 @@ const TestimonialCard = ({ item }: { item: Testimonial }) => {
 const Testimonials = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -126,33 +150,23 @@ const Testimonials = () => {
           },
         }
       );
-
-      // Cards staggered reveal
-      const cards = cardsRef.current?.querySelectorAll('.testimonial-card');
-      if (cards) {
-        cards.forEach((card) => {
-          gsap.fromTo(
-            card,
-            { y: 80, opacity: 0, scale: 0.9 },
-            {
-              y: 0,
-              opacity: 1,
-              scale: 1,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: card,
-                start: "top 90%",
-                end: "top 70%",
-                scrub: 1,
-              },
-            }
-          );
-        });
-      }
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      // Scroll by one card width (assuming responsive card width)
+      // For a better UX, scroll by 320px (a bit less than typical mobile width)
+      const scrollAmount = window.innerWidth < 768 ? 300 : 420;
+      container.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <section ref={sectionRef} id="testimonials" className="relative py-20 bg-brand-dark overflow-hidden">
@@ -168,18 +182,52 @@ const Testimonials = () => {
             <div className="w-12 h-1 bg-brand-rose rounded-full" />
             <span className="text-white/50 text-sm uppercase tracking-widest">Témoignages</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-white">
-            Ils m'ont fait confiance
-          </h2>
-          <p className="text-white/40 mt-4 max-w-2xl text-lg italic">
-            "Tout au long de mon parcours professionnel, j'ai eu la chance de collaborer avec des employeurs et collègues qui ont reconnu mon savoir-faire."
-          </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-white">
+                Ils m'ont fait confiance
+              </h2>
+              <p className="text-white/40 mt-4 max-w-2xl text-lg italic">
+                "Tout au long de mon parcours professionnel, j'ai eu la chance de collaborer avec des employeurs et collègues qui ont reconnu mon savoir-faire."
+              </p>
+            </div>
+            
+            {/* Navigation buttons */}
+            <div className="flex items-center gap-3">
+              <button 
+                onClick={() => scroll('left')}
+                className="w-12 h-12 flex items-center justify-center rounded-full glass-card hover:bg-white/10 text-white transition-colors"
+                aria-label="Avis précédent"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button 
+                onClick={() => scroll('right')}
+                className="w-12 h-12 flex items-center justify-center rounded-full glass-card hover:bg-white/10 text-white transition-colors"
+                aria-label="Avis suivant"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div ref={cardsRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((item) => (
-            <TestimonialCard key={item.id} item={item} />
-          ))}
+        {/* Carousel Container */}
+        <div className="relative -mx-4 sm:-mx-8 px-4 sm:px-8">
+          <div 
+            ref={scrollContainerRef} 
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {testimonials.map((item) => (
+              <div 
+                key={item.id} 
+                className="w-[85vw] sm:w-[400px] shrink-0 snap-center"
+              >
+                <TestimonialCard item={item} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
