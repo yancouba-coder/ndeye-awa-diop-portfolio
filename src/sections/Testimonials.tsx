@@ -79,6 +79,14 @@ const testimonials: Testimonial[] = [
     content: "J'ai eu la chance de travailler avec Awa cette année et je n'ai qu'une seule chose à dire : c'est la perle rare.\nElle est toujours pleine d'idées, créative, investie et force de proposition. On sent qu'elle aime ce qu'elle fait et ça se ressent.\nAwa est un vrai rayon de soleil : bonne humeur, énergie et beaucoup d'humour sont à prévoir.\nJe suis persuadée qu'elle ira très loin et qu'elle sera un véritable atout pour sa prochaine équipe, comme elle l'a été pour la nôtre.",
     source: "LinkedIn",
     color: "from-violet-500 to-fuchsia-500"
+  },
+  {
+    id: 9,
+    name: "Saïd MAMERI",
+    role: "Data Analyst",
+    content: "J'ai eu le plaisir de travailler avec Awa et je la recommande sans hésitation. Sérieuse, impliquée et autonome, elle fait preuve d'un grand professionnalisme. Son excellent relationnel lui permet de collaborer efficacement avec les équipes et de relever de nouveaux défis avec enthousiasme.\nJe suis convaincu qu'elle sera un véritable atout pour toute les personnes qui auront l'opportunité de travailler avec elle. Je lui souhaite beaucoup de réussite dans la suite de son parcours.",
+    source: "LinkedIn",
+    color: "from-cyan-500 to-teal-500"
   }
 ];
 
